@@ -27,3 +27,11 @@ max_values
 
 mean_values <- sapply(data[, sapply(data, is.numeric)], mean, na.rm = TRUE)
 mean_values
+
+# --- Analysis of distribution of respondents by preference level ---
+
+count_of_high_ratings <- colSums(data[, sapply(data, is.numeric)] > 0.7, na.rm = TRUE)
+count_of_high_ratings
+
+count_of_low_ratings <- colSums(data[, sapply(data, is.numeric)] < 0.3, na.rm = TRUE)
+count_of_low_ratings
