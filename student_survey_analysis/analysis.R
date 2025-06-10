@@ -35,3 +35,18 @@ count_of_high_ratings
 
 count_of_low_ratings <- colSums(data[, sapply(data, is.numeric)] < 0.3, na.rm = TRUE)
 count_of_low_ratings
+
+# --- Working with missing data ---
+
+data_mean_input <- data
+
+numeric_cols <- sapply(data_mean_input, is.numeric)
+data_mean_input[, numeric_cols] <- lapply(data_mean_input[, numeric_cols], function(x) {
+  x[is.na(x)] <- mean(x, na.rm = TRUE)
+  round(x, 1)
+})
+data_mean_input
+
+data_delete <- na.omit(data)
+data_delete
+
