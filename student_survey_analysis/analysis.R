@@ -50,3 +50,11 @@ data_mean_input
 data_delete <- na.omit(data)
 data_delete
 
+data <- data_mean_input
+
+# --- Sorting data set ---
+sorted_genres_asc <- sort(mean_values)
+sorted_genres_asc
+
+sorted_genres_desc <- sort(mean_values, decreasing = TRUE)
+sorted_genres_desc
