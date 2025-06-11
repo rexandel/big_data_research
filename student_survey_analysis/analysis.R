@@ -62,6 +62,12 @@ sorted_genres_asc
 sorted_genres_desc <- sort(mean_values, decreasing = TRUE)
 sorted_genres_desc
 
+sorted_by_detective_asc <- data[order(data$Detective, decreasing = FALSE), ]
+sorted_by_detective_asc
+
+sorted_by_detective_desc <- data[order(data$Detective, decreasing = TRUE), ]
+sorted_by_detective_desc
+
 # --- Creating subsets of data ---
 sci_fi_high <- data[data$Sci.Fi > 0.7, ]
 sci_fi_high
@@ -69,10 +75,87 @@ sci_fi_high
 students_sci_fi_high <- sci_fi_high[, 1]
 students_sci_fi_high
 
-musical_low <- data[data$Musical > 0.7, ]
+musical_low <- data[data$Musical < 0.3, ]
 musical_low
 
 students_musical_low <- musical_low[, 1]
 students_musical_low
 
+# --- Setting up margins ---
+par(mar = c(6, 4, 2, 1) + 0.1) # c(bottom, left, top, right)
+# dev.off()
 
+# --- Plotting min, max, mean genre ratings barplots ---
+barplot(min_values,
+        main = "Minimum genre ratings",
+        xlab = "",
+        ylab = "Minimum rating",
+        ylim = c(0, 1),
+        col = rgb(0.9,0.2,0.5,0.6),
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+title(xlab = "Genre", line = 4)
+
+barplot(max_values,
+        main = "Maximum genre ratings",
+        xlab = "",
+        ylab = "Maximum rating",
+        ylim = c(0, 1),
+        col = rgb(0.5,0.6,0.8,0.9),
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+title(xlab = "Genre", line = 4)
+
+barplot(mean_values,
+        main = "Average genre ratings",
+        xlab = "",
+        ylab = "Average rating",
+        ylim = c(0, 1),
+        col = rgb(0.376, 0.808, 0.902),
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+title(xlab = "Genre", line = 4)
+
+# --- Plotting rating barplot by genre  ---
+barplot(height = data$Horror,
+        names.arg = data$Surname,
+        main = "Horror Ratings",
+        xlab = "",
+        ylab = "Rating",
+        ylim = c(0, 1),
+        col = rgb(0.682, 0.396, 0.831),
+        las = 2,
+        cex.names = 0.8)
+
+title(xlab = "Surname", line = 5)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+
+# --- Plotting barplot of respondent's ratings ---
+barplot(as.numeric(data[data$Surname == "Vavakin", sapply(data, is.numeric)]),
+        names.arg = genres,
+        main = "Respondent's ratings",
+        xlab = "",
+        ylab = "Rating",
+        ylim = c(0, 1),
+        col = rgb(0.749, 0.263, 0.412),
+        las = 2)
+
+title(xlab = "Genre", line = 5)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+
+# --- Plotting average ratings of each respondent ---
+barplot(height = rowMeans(data[-1]),
+        names.arg = data$Surname,
+        main = "Average ratings of respondents",
+        ylab = "Average score",
+        ylim = c(0, 1),
+        col = hcl.colors(nrow(data)),
+        las = 2,
+        cex.names = 0.7)
+        
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
