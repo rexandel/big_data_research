@@ -159,3 +159,67 @@ barplot(height = rowMeans(data[-1]),
         cex.names = 0.7)
         
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+
+# --- Setting up margins ---
+dev.off()
+
+# --- Plotting boxplots ---
+boxplot(data$Action,
+        main = "Distribution of ratings: Action",
+        ylab = "Rating",
+        ylim = c(0,1),
+        col = rgb(0.831, 0.475, 0.584))
+
+boxplot(data$Sci.Fi,
+        main = "Distribution of ratings: Sci-Fi",
+        ylab = "Rating",
+        ylim = c(0,1),
+        col = rgb(0.561, 0.42, 0.463))
+
+boxplot(data$Thriller,
+        main = "Distribution of ratings: Thriller",
+        ylab = "Rating",
+        ylim = c(0,1),
+        col = rgb(0.22, 0.42, 0.463))
+
+boxplot(data$Comedy,
+        main = "Distribution of ratings: Comedy",
+        ylab = "Rating",
+        ylim = c(0,1),
+        col = rgb(0.63, 0.82, 0.463))
+
+boxplot(data$Horror,
+        main = "Distribution of ratings: Horror",
+        ylab = "Rating",
+        ylim = c(0,1),
+        col = rgb(0.77, 0.651, 0.106))
+
+boxplot(data$Drama,
+        main = "Distribution of ratings: Drama",
+        ylab = "Rating",
+        ylim = c(0,1),
+        col = rgb(0.77, 0.651, 0.85))
+
+boxplot(data$Musical,
+        main = "Distribution of ratings: Musical",
+        ylab = "Rating",
+        ylim = c(0,1),
+        col = rgb(0.427, 0.63, 0.541))
+
+boxplot(data$Detective,
+        main = "Distribution of ratings: Detective",
+        ylab = "Rating",
+        ylim = c(0,1),
+        col = rgb(0.82, 0.361, 0.298))
+
+boxplot(data$Cartoon,
+        main = "Distribution of ratings: Cartoon",
+        ylab = "Rating",
+        ylim = c(0,1),
+        col = rgb(0.82, 0.42, 0.063))
+
+boxplot(data$Adventure,
+        main = "Distribution of ratings: Adventure",
+        ylab = "Rating",
+        ylim = c(0,1),
+        col = rgb(0.365, 0.769, 0.251))
