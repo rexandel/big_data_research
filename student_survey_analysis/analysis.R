@@ -1,5 +1,7 @@
+setwd("C:/Users/rexandel/Desktop/GitHub/big_data_research/student_survey_analysis")
+
 library(readxl)
-survey <- read_excel("C:/Users/rexandel/Desktop/GitHub/big_data_research/student_survey_analysis/survey.xlsx")
+survey <- read_excel("survey.xlsx")
 
 data <- data.frame(survey)
 data
