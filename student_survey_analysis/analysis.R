@@ -1,7 +1,10 @@
+# ----- Connecting libraries -----
+library("psych")
+library("readxl")
+
 # ----- Getting data from Excel -----
 setwd("C:/Users/rexandel/Desktop/GitHub/big_data_research/student_survey_analysis")
 
-library(readxl)
 survey <- read_excel("survey.xlsx")
 
 data <- data.frame(survey)
@@ -28,6 +31,38 @@ max_values
 
 mean_values <- sapply(data[, sapply(data, is.numeric)], mean, na.rm = TRUE)
 mean_values
+
+median_values <- sapply(data[, sapply(data, is.numeric)], median, na.rm = TRUE)
+median_values
+
+mode_values <- sapply(data[, sapply(data, is.numeric)], function(x) as.numeric(names(which.max(table(x, useNA = "no")))))
+mode_values
+
+var_values <- sapply(data[, sapply(data, is.numeric)], var, na.rm = TRUE)
+var_values
+
+sd_values <- sapply(data[, sapply(data, is.numeric)], sd, na.rm = TRUE)
+sd_values
+
+skew_values <- sapply(data[, sapply(data, is.numeric)], skew, na.rm = TRUE)
+skew_values
+
+kurtosi_values <- sapply(data[, sapply(data, is.numeric)], kurtosi, na.rm = TRUE)
+kurtosi_values
+
+metrics <- data.frame(
+                      min = min_values,
+                      max = max_values,
+                      scope = max_values - min_values,
+                      mean = round(mean_values, 2),
+                      median = median_values,
+                      mode = mode_values,
+                      var = round(var_values, 3),
+                      sd = round(sd_values, 3),
+                      skew = round(skew_values, 3),
+                      kurtosi = round(kurtosi_values, 3)
+                     )
+metrics
 
 # ----- Analysis of distribution of respondents by preference level -----
 count_of_high_ratings <- colSums(data[, sapply(data, is.numeric)] > 0.7, na.rm = TRUE)
@@ -59,36 +94,44 @@ data_delete
 data <- data_mean_input
 
 # ----- Sorting data set -----
-sorted_genres_asc <- sort(mean_values, decreasing = FALSE)
-sorted_genres_asc
 
-sorted_genres_desc <- sort(mean_values, decreasing = TRUE)
-sorted_genres_desc
+# Not necessary
+# sorted_genres_asc <- sort(mean_values, decreasing = FALSE)
+# sorted_genres_asc
 
+# sorted_genres_desc <- sort(mean_values, decreasing = TRUE)
+# sorted_genres_desc
+
+# Detective
 sorted_by_detective_asc <- data[order(data$Detective, decreasing = FALSE), ]
 sorted_by_detective_asc
 
 sorted_by_detective_desc <- data[order(data$Detective, decreasing = TRUE), ]
 sorted_by_detective_desc
 
+# Horror
+sorted_by_horror_asc <- data[order(data$Horror, decreasing = FALSE), ]
+sorted_by_horror_asc
+
+sorted_by_horror_desc <- data[order(data$Horror, decreasing = TRUE), ]
+sorted_by_horror_desc
+
 # ----- Creating subsets of data -----
-sci_fi_high <- data[data$Sci.Fi > 0.7, ]
-sci_fi_high
+adventure_high <- data[data$Adventure > 0.8, ]
+adventure_high
+str(adventure_high)
+summary(adventure_high)
 
-students_sci_fi_high <- sci_fi_high[, 1]
-students_sci_fi_high
-
-musical_low <- data[data$Musical < 0.3, ]
-musical_low
-
-students_musical_low <- musical_low[, 1]
-students_musical_low
+horror_low <- subset(data, data$Horror < 0.4)
+horror_low
+str(horror_low)
+summary(horror_low)
 
 # ----- Setting up margins -----
 par(mar = c(6, 4, 2, 1) + 0.1) # c(bottom, left, top, right)
 # dev.off()
 
-# ----- Plotting min, max, mean genre ratings barplots -----
+# ----- Plotting min, max, mean, median genre ratings barplots -----
 barplot(height = min_values,
         main = "Minimum genre ratings",
         xlab = "",
@@ -127,6 +170,33 @@ barplot(height = mean_values,
 title(xlab = "Genre", line = 4)
 axis(2, at = seq(0.0, 1.0, 0.1), cex.axis = 0.8, las = 2)
 grid(nx = NA, ny = 10, col = "gray", lty = "dotted")
+
+barplot(height = median_values,
+        main = "Median genre ratings",
+        xlab = "",
+        ylab = "Average rating",
+        ylim = c(0, 1),
+        yaxt = "n",
+        col = rgb(0.44, 0.7, 0),
+        las = 2)
+
+title(xlab = "Genre", line = 4)
+axis(2, at = seq(0.0, 1.0, 0.1), cex.axis = 0.8, las = 2)
+grid(nx = NA, ny = 10, col = "gray", lty = "dotted")
+
+barplot(height = mode_values,
+        main = "Mode genre ratings",
+        xlab = "",
+        ylab = "Average rating",
+        ylim = c(0, 1),
+        yaxt = "n",
+        col = rgb(1, 0.7, 0),
+        las = 2)
+
+title(xlab = "Genre", line = 4)
+axis(2, at = seq(0.0, 1.0, 0.1), cex.axis = 0.8, las = 2)
+grid(nx = NA, ny = 10, col = "gray", lty = "dotted")
+
 
 # ----- Plotting barplot of rating by genre -----
 barplot(height = data$Horror,
@@ -184,6 +254,7 @@ hist(data$Action,
      col = rgb(0.831, 0.475, 0.584),
      border = "black")
 
+lines(density(data$Action), col = "black")
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(1, at = seq(0.05, 0.95, 0.1), labels = seq(0.1, 1, 0.1), cex.axis = 0.8)
 
@@ -196,6 +267,7 @@ hist(data$Sci.Fi,
      col = rgb(0.561, 0.42, 0.463),
      border = "black")
 
+lines(density(data$Sci.Fi), col = "black")
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(1, at = seq(0.05, 0.95, 0.1), labels = seq(0.1, 1, 0.1), cex.axis = 0.8)
 
@@ -208,6 +280,7 @@ hist(data$Thriller,
      col = rgb(0.22, 0.42, 0.463),
      border = "black")
 
+lines(density(data$Thriller), col = "black")
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(1, at = seq(0.05, 0.95, 0.1), labels = seq(0.1, 1, 0.1), cex.axis = 0.8)
 
@@ -220,6 +293,7 @@ hist(data$Comedy,
      col = rgb(0.63, 0.82, 0.463),
      border = "black")
 
+lines(density(data$Comedy), col = "black")
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(1, at = seq(0.05, 0.95, 0.1), labels = seq(0.1, 1, 0.1), cex.axis = 0.8)
 
@@ -232,6 +306,7 @@ hist(data$Horror,
      col = rgb(0.77, 0.651, 0.106),
      border = "black")
 
+lines(density(data$Horror), col = "black")
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(1, at = seq(0.05, 0.95, 0.1), labels = seq(0.1, 1, 0.1), cex.axis = 0.8)
 
@@ -244,6 +319,7 @@ hist(data$Drama,
      col = rgb(0.77, 0.651, 0.85),
      border = "black")
 
+lines(density(data$Drama, bw = 0.1), col = "black")
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(1, at = seq(0.05, 0.95, 0.1), labels = seq(0.1, 1, 0.1), cex.axis = 0.8)
 
@@ -256,6 +332,7 @@ hist(data$Musical,
      col = rgb(0.427, 0.63, 0.541),
      border = "black")
 
+lines(density(data$Musical), col = "black")
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(1, at = seq(0.05, 0.95, 0.1), labels = seq(0.1, 1, 0.1), cex.axis = 0.8)
 
@@ -268,6 +345,7 @@ hist(data$Detective,
      col = rgb(0.82, 0.361, 0.298),
      border = "black")
 
+lines(density(data$Detective), col = "black")
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(1, at = seq(0.05, 0.95, 0.1), labels = seq(0.1, 1, 0.1), cex.axis = 0.8)
 
@@ -280,6 +358,7 @@ hist(data$Cartoon,
      col = rgb(0.82, 0.42, 0.063),
      border = "black")
 
+lines(density(data$Cartoon), col = "black")
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(1, at = seq(0.05, 0.95, 0.1), labels = seq(0.1, 1, 0.1), cex.axis = 0.8)
 
@@ -292,6 +371,7 @@ hist(data$Adventure,
      col = rgb(0.365, 0.769, 0.251),
      border = "black")
 
+lines(density(data$Adventure), col = "black")
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(1, at = seq(0.05, 0.95, 0.1), labels = seq(0.1, 1, 0.1), cex.axis = 0.8)
 
@@ -308,6 +388,8 @@ boxplot(data$Action,
 
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(2, at = seq(0.0, 1.0, 0.1), cex.axis = 0.8, las = 2)
+summary(data$Action)
+IQR(data$Action)
 
 boxplot(data$Sci.Fi,
         main = "Distribution of ratings: Sci-Fi",
@@ -318,6 +400,8 @@ boxplot(data$Sci.Fi,
 
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(2, at = seq(0.0, 1.0, 0.1), cex.axis = 0.8, las = 2)
+summary(data$Sci.Fi)
+IQR(data$Sci.Fi)
 
 boxplot(data$Thriller,
         main = "Distribution of ratings: Thriller",
@@ -328,6 +412,8 @@ boxplot(data$Thriller,
 
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(2, at = seq(0.0, 1.0, 0.1), cex.axis = 0.8, las = 2)
+summary(data$Thriller)
+IQR(data$Thriller)
 
 boxplot(data$Comedy,
         main = "Distribution of ratings: Comedy",
@@ -338,6 +424,8 @@ boxplot(data$Comedy,
 
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(2, at = seq(0.0, 1.0, 0.1), cex.axis = 0.8, las = 2)
+summary(data$Comedy)
+IQR(data$Comedy)
 
 boxplot(data$Horror,
         main = "Distribution of ratings: Horror",
@@ -348,6 +436,8 @@ boxplot(data$Horror,
 
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(2, at = seq(0.0, 1.0, 0.1), cex.axis = 0.8, las = 2)
+summary(data$Horror)
+IQR(data$Horror)
 
 boxplot(data$Drama,
         main = "Distribution of ratings: Drama",
@@ -358,6 +448,8 @@ boxplot(data$Drama,
 
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(2, at = seq(0.0, 1.0, 0.1), cex.axis = 0.8, las = 2)
+summary(data$Drama)
+IQR(data$Drama)
 
 boxplot(data$Musical,
         main = "Distribution of ratings: Musical",
@@ -368,6 +460,8 @@ boxplot(data$Musical,
 
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(2, at = seq(0.0, 1.0, 0.1), cex.axis = 0.8, las = 2)
+summary(data$Musical)
+IQR(data$Musical)
 
 boxplot(data$Detective,
         main = "Distribution of ratings: Detective",
@@ -378,6 +472,8 @@ boxplot(data$Detective,
 
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(2, at = seq(0.0, 1.0, 0.1), cex.axis = 0.8, las = 2)
+summary(data$Detective)
+IQR(data$Detective)
 
 boxplot(data$Cartoon,
         main = "Distribution of ratings: Cartoon",
@@ -388,6 +484,8 @@ boxplot(data$Cartoon,
 
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(2, at = seq(0.0, 1.0, 0.1), cex.axis = 0.8, las = 2)
+summary(data$Cartoon)
+IQR(data$Cartoon)
 
 boxplot(data$Adventure,
         main = "Distribution of ratings: Adventure",
@@ -398,3 +496,5 @@ boxplot(data$Adventure,
 
 grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(2, at = seq(0.0, 1.0, 0.1), cex.axis = 0.8, las = 2)
+summary(data$Adventure)
+IQR(data$Adventure)
