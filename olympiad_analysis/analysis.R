@@ -10,7 +10,7 @@ norway_beatlon <- read_excel("norway_beatlon.xlsx")
 norway_beatlon <- data.frame(norway_beatlon)
 names(norway_beatlon) <- c("Olympiad", 
                  "1", "2", "3", "4",
-                 "5", "6", "7", "8")
+                 "5", "6", "7", "8", "Top Three")
 norway_beatlon
 
 norway_beatlon_genders <- read_excel("norway_beatlon_genders.xlsx")
@@ -33,30 +33,37 @@ medal_places <- data.frame(medal_places)
 medal_places
 
 # ----- Setting up margins -----
-par(mar = c(8, 4, 2, 1) + 0.1) # c(bottom, left, top, right)
+par(mar = c(8, 4, 2, 6) + 0.1) # c(bottom, left, top, right)
 
 # ----- Building barplot (Number of places in biathlon Norway) -----
-plot_data <- as.matrix(norway_beatlon[, -1])
-rownames(plot_data) <- norway_beatlon$Olympiad
+norway_beatlon_barplot <- as.matrix(norway_beatlon[, -1])
+rownames(norway_beatlon_barplot) <- norway_beatlon$Olympiad
 
-barplot(t(plot_data),
+barplot(t(norway_beatlon_barplot),
         beside = TRUE,
         col = rainbow(8),
         main = "Number of places 1-8 for each Olympiad",
         ylab = "Number of places",
         xlab = "",
-        legend.text = paste("Place", 1:8),
-        args.legend = list(x = "topright", bty = "n", ncol = 2),
         las = 2,
         cex.names = 0.8)
 
 title(xlab = "Olympiad", line = 5)
 grid(nx = NA, ny = NULL, lty = 2, col = "gray")
 
+legend("topright", inset = c(-0.15, 0),
+       legend = paste("Place", 1:8),
+       fill = place_colors,
+       title = "Place",
+       cex = 0.8,
+       bty = "n",
+       xpd = TRUE)
+
 # ----- Setting up margins -----
 dev.off()
 
 # ----- Building piechart (Number of first places in each Olympiad) -----
+norway_beatlon
 first_places <- norway_beatlon$`1`
 olympiads <- norway_beatlon$Olympiad
 
@@ -82,12 +89,10 @@ par(mar = c(10, 4, 2, 8) + 0.1) # c(bottom, left, top, right)
 
 # ----- Building plot (Trends in number of prizes for men and women) -----
 norway_beatlon_genders
-norway_beatlon_genders_numeric <- norway_beatlon_genders[sapply(norway_beatlon_genders, is.numeric)]
-norway_beatlon_genders_numeric
 
-olympiads <- rev(norway_beatlon_genders$Olympiad)
-male_counts <- rev(norway_beatlon_genders_numeric$`Top Male`)
-female_counts <- rev(norway_beatlon_genders_numeric$`Top Female`)
+olympiads <- norway_beatlon_genders$Olympiad
+male_counts <- norway_beatlon_genders$`Top Male`
+female_counts <- norway_beatlon_genders$`Top Female`
 
 plot(1, type = "n", 
      xlim = c(1, length(olympiads)), 
@@ -110,5 +115,57 @@ legend(x = "topright", inset = c(-0.25, 0),
        title = "Gender",
        bty = "n",
        xpd = TRUE)
+
+grid(nx = NA, ny = NULL, col = "lightgray", lty = "dotted")
+
+# ----- Building plot (Trends in sports achievements by gold medals) -----
+gold_medals
+
+colors <- c("Norway" = "blue", 
+            "Germany" = "cadetblue",
+            "USA" = "red",
+            "Canada" = "purple",
+            "Netherlands" = "orange",
+            "Austria" = "darkgreen",
+            "Switzerland" = "red4")
+
+olympiads <- gold_medals$Olympiad
+norway_counts <- gold_medals$Norway
+germany_counts <- gold_medals$Germany
+usa_counts <- gold_medals$USA
+canada_counts <- gold_medals$Canada
+netherlands_counts <- gold_medals$Netherlands
+austia_counts <- gold_medals$Austria
+switzerland_counts <- gold_medals$Switzerland
+
+plot(1, type = "n", 
+     xlim = c(1, length(olympiads)), 
+     ylim = c(0, max(gold_medals[,-1]) + 1),
+     xlab = "",
+     ylab = "Total number of gold medals",
+     main = "Trends in sports achievements by gold medals (2002-2022)",
+     xaxt = "n")
+
+title(xlab = "Olympic Games", line = 8)
+axis(1, at = 1:length(olympiads), labels = olympiads, las = 2, cex.axis = 0.8)
+
+lines(norway_counts, type = "o", col = colors["Norway"], pch = 16, lwd = 2)
+lines(germany_counts, type = "o", col = colors["Germany"], pch = 16, lwd = 2)
+lines(usa_counts, type = "o", col = colors["USA"], pch = 16, lwd = 2)
+lines(canada_counts, type = "o", col = colors["Canada"], pch = 16, lwd = 2)
+lines(netherlands_counts, type = "o", col = colors["Netherlands"], pch = 16, lwd = 2)
+lines(austia_counts, type = "o", col = colors["Austria"], pch = 16, lwd = 2)
+lines(switzerland_counts, type = "o", col = colors["Switzerland"], pch = 16, lwd = 2)
+
+legend("right", 
+       inset = c(-0.2, 0),
+       legend = names(colors),
+       col = colors,
+       lty = 1,
+       pch = 16,
+       title = "Countries",
+       bty = "n",
+       xpd = TRUE,
+       cex = 0.8)
 
 grid(nx = NA, ny = NULL, col = "lightgray", lty = "dotted")
