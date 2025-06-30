@@ -6,6 +6,7 @@ setwd("C:/Users/rexandel/Desktop/GitHub/big_data_research/olympiad_analysis")
 getwd()
 
 # ----- Importing data from Excel -----
+# norway_beatlon - data on Norway's biathlon victories without gender division
 norway_beatlon <- read_excel("norway_beatlon.xlsx") 
 norway_beatlon <- data.frame(norway_beatlon)
 names(norway_beatlon) <- c("Olympiad", 
@@ -13,6 +14,7 @@ names(norway_beatlon) <- c("Olympiad",
                  "5", "6", "7", "8", "Top Three")
 norway_beatlon
 
+# norway_beatlon_genders - data on Norway's biathlon victories with gender division
 norway_beatlon_genders <- read_excel("norway_beatlon_genders.xlsx")
 norway_beatlon_genders <- data.frame(norway_beatlon_genders)
 names(norway_beatlon_genders) <- c("Olympiad", 
@@ -24,10 +26,12 @@ names(norway_beatlon_genders) <- c("Olympiad",
                            "Male", "Female")
 norway_beatlon_genders
 
+# gold_medals - data on gold medals of top 7 countries at last 6 Olympic Games
 gold_medals <- read_excel("gold_medals.xlsx")
 gold_medals <- data.frame(gold_medals)
 gold_medals
 
+# medal_places - data on medals of top 7 countries at last 6 Olympic Games
 medal_places <- read_excel("medal_places.xlsx")
 medal_places <- data.frame(medal_places)
 medal_places
@@ -42,14 +46,13 @@ rownames(norway_beatlon_barplot) <- norway_beatlon$Olympiad
 barplot(t(norway_beatlon_barplot),
         beside = TRUE,
         col = rainbow(8),
+        ylim = c(0, max(norway_beatlon_barplot) + 1),
+        yaxt = "n",
         main = "Number of places 1-8 for each Olympiad",
         ylab = "Number of places",
         xlab = "",
         las = 2,
         cex.names = 0.8)
-
-title(xlab = "Olympiad", line = 5)
-grid(nx = NA, ny = NULL, lty = 2, col = "gray")
 
 legend("topright", inset = c(-0.15, 0),
        legend = paste("Place", 1:8),
@@ -58,6 +61,10 @@ legend("topright", inset = c(-0.15, 0),
        cex = 0.8,
        bty = "n",
        xpd = TRUE)
+
+axis(2, at = -1:max(norway_beatlon_barplot) + 1, las = 2)
+title(xlab = "Olympiad", line = 5)
+grid(nx = NA, ny = NULL, lty = 2, col = "gray")
 
 # ----- Setting up margins -----
 dev.off()
@@ -74,8 +81,7 @@ filtered_counts <- first_places[nonzero_indices]
 pie(filtered_counts, 
     labels = filtered_counts,
     col = rainbow(length(filtered_counts)),
-    main = "Norway's First Place Finishes in Biathlon by Olympiad",
-    cex.main = 1.2)
+    main = "Norway's First Place Finishes in Biathlon by Olympiad")
 
 legend(x = "right", 
        legend = filtered_olympiads, 
@@ -94,7 +100,8 @@ olympiads <- norway_beatlon_genders$Olympiad
 male_counts <- norway_beatlon_genders$`Top Male`
 female_counts <- norway_beatlon_genders$`Top Female`
 
-plot(1, type = "n", 
+plot(1,
+     type = "n", 
      xlim = c(1, length(olympiads)), 
      ylim = range(c(male_counts, female_counts)),
      xlab = "",
@@ -102,13 +109,11 @@ plot(1, type = "n",
      main = "Trend of Norway's Biathlon Results by Gender (1992-2022)",
      xaxt = "n")
 
-title(xlab = "Olympic Games", line = 8)
-axis(1, at = 1:length(olympiads), labels = olympiads, las = 2, cex.axis = 0.8)
-
 lines(male_counts, type = "o", col = "blue", pch = 16, lwd = 2)
 lines(female_counts, type = "o", col = "red", pch = 16, lwd = 2)
 
-legend(x = "topright", inset = c(-0.25, 0),
+legend(x = "topright",
+       inset = c(-0.2, 0),
        legend = c("Male", "Female"),
        col = c("blue", "red"),
        lty = 1, pch = 16,
@@ -116,6 +121,8 @@ legend(x = "topright", inset = c(-0.25, 0),
        bty = "n",
        xpd = TRUE)
 
+title(xlab = "Olympic Games", line = 8)
+axis(1, at = 1:length(olympiads), labels = olympiads, las = 2, cex.axis = 0.8)
 grid(nx = NA, ny = NULL, col = "lightgray", lty = "dotted")
 
 # ----- Building plot (Trends in sports achievements by gold medals) -----
@@ -138,16 +145,16 @@ netherlands_counts <- gold_medals$Netherlands
 austia_counts <- gold_medals$Austria
 switzerland_counts <- gold_medals$Switzerland
 
-plot(1, type = "n", 
-     xlim = c(1, length(olympiads)), 
+plot(1,
+     type = "n", 
+     xlim = c(1, length(olympiads)),
      ylim = c(0, max(gold_medals[, -1]) + 1),
+     yaxt = "n",
+     xaxt = "n",
      xlab = "",
      ylab = "Total number of gold medals",
-     main = "Trends in sports achievements by gold medals (2002-2022)",
-     xaxt = "n")
-
-title(xlab = "Olympic Games", line = 8)
-axis(1, at = 1:length(olympiads), labels = olympiads, las = 2, cex.axis = 0.8)
+     main = "Trends in sports achievements by gold medals (2002-2022)"
+     )
 
 lines(norway_counts, type = "o", col = colors["Norway"], pch = 16, lwd = 2)
 lines(germany_counts, type = "o", col = colors["Germany"], pch = 16, lwd = 2)
@@ -168,6 +175,9 @@ legend("right",
        xpd = TRUE,
        cex = 0.8)
 
+title(xlab = "Olympic Games", line = 8)
+axis(2, at = 0:max(gold_medals[, -1]) + 1, las = 2, cex.axis = 0.8)
+axis(1, at = 1:length(olympiads), labels = olympiads, las = 2, cex.axis = 0.8)
 grid(nx = NA, ny = NULL, col = "lightgray", lty = "dotted")
 
 # ----- Building plot (Trends in sports achievements by medals) -----
@@ -190,16 +200,16 @@ netherlands_counts <- medal_places$Netherlands
 austia_counts <- medal_places$Austria
 switzerland_counts <- medal_places$Switzerland
 
-plot(1, type = "n", 
+plot(1,
+     type = "n", 
      xlim = c(1, length(olympiads)), 
-     ylim = c(0, max(medal_places[, -1]) + 1),
+     ylim = c(min(medal_places[, -1]), max(medal_places[, -1]) + 1),
+     yaxt = "n",
+     xaxt = "n",
      xlab = "",
      ylab = "Total number of medals",
-     main = "Trends in sports achievements by medals (2002-2022)",
-     xaxt = "n")
-
-title(xlab = "Olympic Games", line = 8)
-axis(1, at = 1:length(olympiads), labels = olympiads, las = 2, cex.axis = 0.8)
+     main = "Trends in sports achievements by medals (2002-2022)"
+     )
 
 lines(norway_counts, type = "o", col = colors["Norway"], pch = 16, lwd = 2)
 lines(germany_counts, type = "o", col = colors["Germany"], pch = 16, lwd = 2)
@@ -220,4 +230,7 @@ legend("right",
        xpd = TRUE,
        cex = 0.8)
 
+title(xlab = "Olympic Games", line = 8)
+axis(2, at = (min(medal_places[, -1]) - 1):max(medal_places[, -1]) + 1, las = 2, cex.axis = 0.8)
+axis(1, at = 1:length(olympiads), labels = olympiads, las = 2, cex.axis = 0.8)
 grid(nx = NA, ny = NULL, col = "lightgray", lty = "dotted")
