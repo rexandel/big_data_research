@@ -140,10 +140,62 @@ switzerland_counts <- gold_medals$Switzerland
 
 plot(1, type = "n", 
      xlim = c(1, length(olympiads)), 
-     ylim = c(0, max(gold_medals[,-1]) + 1),
+     ylim = c(0, max(gold_medals[, -1]) + 1),
      xlab = "",
      ylab = "Total number of gold medals",
      main = "Trends in sports achievements by gold medals (2002-2022)",
+     xaxt = "n")
+
+title(xlab = "Olympic Games", line = 8)
+axis(1, at = 1:length(olympiads), labels = olympiads, las = 2, cex.axis = 0.8)
+
+lines(norway_counts, type = "o", col = colors["Norway"], pch = 16, lwd = 2)
+lines(germany_counts, type = "o", col = colors["Germany"], pch = 16, lwd = 2)
+lines(usa_counts, type = "o", col = colors["USA"], pch = 16, lwd = 2)
+lines(canada_counts, type = "o", col = colors["Canada"], pch = 16, lwd = 2)
+lines(netherlands_counts, type = "o", col = colors["Netherlands"], pch = 16, lwd = 2)
+lines(austia_counts, type = "o", col = colors["Austria"], pch = 16, lwd = 2)
+lines(switzerland_counts, type = "o", col = colors["Switzerland"], pch = 16, lwd = 2)
+
+legend("right", 
+       inset = c(-0.2, 0),
+       legend = names(colors),
+       col = colors,
+       lty = 1,
+       pch = 16,
+       title = "Countries",
+       bty = "n",
+       xpd = TRUE,
+       cex = 0.8)
+
+grid(nx = NA, ny = NULL, col = "lightgray", lty = "dotted")
+
+# ----- Building plot (Trends in sports achievements by medals) -----
+medal_places
+
+colors <- c("Norway" = "blue", 
+            "Germany" = "cadetblue",
+            "USA" = "red",
+            "Canada" = "purple",
+            "Netherlands" = "orange",
+            "Austria" = "darkgreen",
+            "Switzerland" = "red4")
+
+olympiads <- medal_places$Olympiad
+norway_counts <- medal_places$Norway
+germany_counts <- medal_places$Germany
+usa_counts <- medal_places$USA
+canada_counts <- medal_places$Canada
+netherlands_counts <- medal_places$Netherlands
+austia_counts <- medal_places$Austria
+switzerland_counts <- medal_places$Switzerland
+
+plot(1, type = "n", 
+     xlim = c(1, length(olympiads)), 
+     ylim = c(0, max(medal_places[, -1]) + 1),
+     xlab = "",
+     ylab = "Total number of medals",
+     main = "Trends in sports achievements by medals (2002-2022)",
      xaxt = "n")
 
 title(xlab = "Olympic Games", line = 8)
