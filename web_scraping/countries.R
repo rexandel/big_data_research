@@ -137,6 +137,9 @@ data_turkey
 data_denmark
 
 # ----- Charting the dynamics of the Quality Of Life Index -----
+dev.off()
+dev.new()
+
 ylim_data_qoli <- c(min(data_brazil$Quality_of_Life_Index,
                         data_india$Quality_of_Life_Index,
                         data_lebanon$Quality_of_Life_Index,
@@ -243,7 +246,50 @@ text(data_denmark$Year,
      labels = data_denmark$Quality_of_Life_Index,
      pos = 3, cex = 0.8)
 
+# All Countries
+par(mar = c(5, 5, 5, 8) + 0.1) # c(bottom, left, top, right)
+
+plot(NA, 
+     xlim = range(years), 
+     ylim = ylim_data_qoli,
+     xlab = "Year", 
+     ylab = "Quality of Life Index",
+     main = "Quality of Life Index by Country (2014-2021)",
+     xaxt = "n",
+     las = 1)
+
+axis(1, at = years, labels = years)
+
+lines(data_brazil$Year, data_brazil$Quality_of_Life_Index, 
+      type = "o", col = "darkgreen", lwd = 2, pch = 19)
+
+lines(data_india$Year, data_india$Quality_of_Life_Index, 
+      type = "o", col = "darkred", lwd = 2, pch = 19)
+
+lines(data_lebanon$Year, data_lebanon$Quality_of_Life_Index, 
+      type = "o", col = "darkblue", lwd = 2, pch = 19)
+
+lines(data_turkey$Year, data_turkey$Quality_of_Life_Index, 
+      type = "o", col = "orange2", lwd = 2, pch = 19)
+
+lines(data_denmark$Year, data_denmark$Quality_of_Life_Index, 
+      type = "o", col = "purple3", lwd = 2, pch = 19)
+
+legend("topright",
+       inset = c(-0.25, 0),
+       legend = c("Brazil", "India", "Lebanon", "Turkey", "Denmark"),
+       col = c("darkgreen", "darkred", "darkblue", "orange2", "purple3"),
+       lwd = 2, 
+       pch = 19,
+       bty = "n",
+       xpd = TRUE)
+
+grid(nx = NA, ny = NULL, lty = 2, col = "lightgray")
+
 # ----- Charting the dynamics of the Purchasing Power Index -----
+dev.off()
+dev.new()
+
 ylim_data_ppi <- c(min(data_brazil$Purchasing_Power_Index,
                        data_india$Purchasing_Power_Index,
                        data_lebanon$Purchasing_Power_Index,
@@ -350,7 +396,50 @@ text(data_denmark$Year,
      labels = data_denmark$Purchasing_Power_Index,
      pos = 3, cex = 0.8)
 
+# All Countries
+par(mar = c(5, 5, 5, 8) + 0.1) # c(bottom, left, top, right)
+
+plot(NA, 
+     xlim = range(years), 
+     ylim = ylim_data_ppi,
+     xlab = "Year", 
+     ylab = "Purchasing Power Index",
+     main = "Purchasing Power Index by Country (2014-2021)",
+     xaxt = "n",
+     las = 1)
+
+axis(1, at = years, labels = years)
+
+lines(data_brazil$Year, data_brazil$Purchasing_Power_Index, 
+      type = "o", col = "darkgreen", lwd = 2, pch = 19)
+
+lines(data_india$Year, data_india$Purchasing_Power_Index, 
+      type = "o", col = "darkred", lwd = 2, pch = 19)
+
+lines(data_lebanon$Year, data_lebanon$Purchasing_Power_Index, 
+      type = "o", col = "darkblue", lwd = 2, pch = 19)
+
+lines(data_turkey$Year, data_turkey$Purchasing_Power_Index, 
+      type = "o", col = "orange2", lwd = 2, pch = 19)
+
+lines(data_denmark$Year, data_denmark$Purchasing_Power_Index, 
+      type = "o", col = "purple3", lwd = 2, pch = 19)
+
+legend("topright",
+       inset = c(-0.25, 0),
+       legend = c("Brazil", "India", "Lebanon", "Turkey", "Denmark"),
+       col = c("darkgreen", "darkred", "darkblue", "orange2", "purple3"),
+       lwd = 2, 
+       pch = 19,
+       bty = "n",
+       xpd = TRUE)
+
+grid(nx = NA, ny = NULL, lty = 2, col = "lightgray")
+
 # ----- Charting the dynamics of the Safety Index -----
+dev.off()
+dev.new()
+
 ylim_data_si <- c(min(data_brazil$Safety_Index,
                        data_india$Safety_Index,
                        data_lebanon$Safety_Index,
@@ -457,7 +546,50 @@ text(data_denmark$Year,
      labels = data_denmark$Safety_Index,
      pos = 3, cex = 0.8)
 
+# All Countries
+par(mar = c(5, 5, 5, 8) + 0.1) # c(bottom, left, top, right)
+
+plot(NA, 
+     xlim = range(years), 
+     ylim = ylim_data_si,
+     xlab = "Year", 
+     ylab = "Safety Index",
+     main = "Safety Index by Country (2014-2021)",
+     xaxt = "n",
+     las = 1)
+
+axis(1, at = years, labels = years)
+
+lines(data_brazil$Year, data_brazil$Safety_Index, 
+      type = "o", col = "darkgreen", lwd = 2, pch = 19)
+
+lines(data_india$Year, data_india$Safety_Index, 
+      type = "o", col = "darkred", lwd = 2, pch = 19)
+
+lines(data_lebanon$Year, data_lebanon$Safety_Index, 
+      type = "o", col = "darkblue", lwd = 2, pch = 19)
+
+lines(data_turkey$Year, data_turkey$Safety_Index, 
+      type = "o", col = "orange2", lwd = 2, pch = 19)
+
+lines(data_denmark$Year, data_denmark$Safety_Index, 
+      type = "o", col = "purple3", lwd = 2, pch = 19)
+
+legend("topright",
+       inset = c(-0.25, 0),
+       legend = c("Brazil", "India", "Lebanon", "Turkey", "Denmark"),
+       col = c("darkgreen", "darkred", "darkblue", "orange2", "purple3"),
+       lwd = 2, 
+       pch = 19,
+       bty = "n",
+       xpd = TRUE)
+
+grid(nx = NA, ny = NULL, lty = 2, col = "lightgray")
+
 # ----- Charting the dynamics of the Health Care Index -----
+dev.off()
+dev.new()
+
 ylim_data_hci <- c(min(data_brazil$Health_Care_Index,
                       data_india$Health_Care_Index,
                       data_lebanon$Health_Care_Index,
@@ -564,7 +696,50 @@ text(data_denmark$Year,
      labels = data_denmark$Health_Care_Index,
      pos = 3, cex = 0.8)
 
+# All Countries
+par(mar = c(5, 5, 5, 8) + 0.1) # c(bottom, left, top, right)
+
+plot(NA, 
+     xlim = range(years), 
+     ylim = ylim_data_hci,
+     xlab = "Year", 
+     ylab = "Health Care Index",
+     main = "Health Care Index by Country (2014-2021)",
+     xaxt = "n",
+     las = 1)
+
+axis(1, at = years, labels = years)
+
+lines(data_brazil$Year, data_brazil$Health_Care_Index, 
+      type = "o", col = "darkgreen", lwd = 2, pch = 19)
+
+lines(data_india$Year, data_india$Health_Care_Index, 
+      type = "o", col = "darkred", lwd = 2, pch = 19)
+
+lines(data_lebanon$Year, data_lebanon$Health_Care_Index, 
+      type = "o", col = "darkblue", lwd = 2, pch = 19)
+
+lines(data_turkey$Year, data_turkey$Health_Care_Index, 
+      type = "o", col = "orange2", lwd = 2, pch = 19)
+
+lines(data_denmark$Year, data_denmark$Health_Care_Index, 
+      type = "o", col = "purple3", lwd = 2, pch = 19)
+
+legend("topright",
+       inset = c(-0.25, 0),
+       legend = c("Brazil", "India", "Lebanon", "Turkey", "Denmark"),
+       col = c("darkgreen", "darkred", "darkblue", "orange2", "purple3"),
+       lwd = 2, 
+       pch = 19,
+       bty = "n",
+       xpd = TRUE)
+
+grid(nx = NA, ny = NULL, lty = 2, col = "lightgray")
+
 # ----- Charting the dynamics of the Cost Of Living Index -----
+dev.off()
+dev.new()
+
 ylim_data_coli <- c(min(data_brazil$Cost_of_Living_Index,
                        data_india$Cost_of_Living_Index,
                        data_lebanon$Cost_of_Living_Index,
@@ -670,7 +845,51 @@ text(data_denmark$Year,
      data_denmark$Cost_of_Living_Index,
      labels = data_denmark$Cost_of_Living_Index,
      pos = 3, cex = 0.8)
+
+# All Countries
+par(mar = c(5, 5, 5, 8) + 0.1) # c(bottom, left, top, right)
+
+plot(NA, 
+     xlim = range(years), 
+     ylim = ylim_data_coli,
+     xlab = "Year", 
+     ylab = "Cost Of Living Index",
+     main = "Cost Of Living Index by Country (2014-2021)",
+     xaxt = "n",
+     las = 1)
+
+axis(1, at = years, labels = years)
+
+lines(data_brazil$Year, data_brazil$Cost_of_Living_Index, 
+      type = "o", col = "darkgreen", lwd = 2, pch = 19)
+
+lines(data_india$Year, data_india$Cost_of_Living_Index, 
+      type = "o", col = "darkred", lwd = 2, pch = 19)
+
+lines(data_lebanon$Year, data_lebanon$Cost_of_Living_Index, 
+      type = "o", col = "darkblue", lwd = 2, pch = 19)
+
+lines(data_turkey$Year, data_turkey$Cost_of_Living_Index, 
+      type = "o", col = "orange2", lwd = 2, pch = 19)
+
+lines(data_denmark$Year, data_denmark$Cost_of_Living_Index, 
+      type = "o", col = "purple3", lwd = 2, pch = 19)
+
+legend("topright",
+       inset = c(-0.25, 0),
+       legend = c("Brazil", "India", "Lebanon", "Turkey", "Denmark"),
+       col = c("darkgreen", "darkred", "darkblue", "orange2", "purple3"),
+       lwd = 2, 
+       pch = 19,
+       bty = "n",
+       xpd = TRUE)
+
+grid(nx = NA, ny = NULL, lty = 2, col = "lightgray")
+
 # ----- Charting the dynamics of the Property Price To Income Ratio -----
+dev.off()
+dev.new()
+
 ylim_data_pptir <- c(min(data_brazil$Property_Price_to_Income_Ratio,
                        data_india$Property_Price_to_Income_Ratio,
                        data_lebanon$Property_Price_to_Income_Ratio,
@@ -777,7 +996,50 @@ text(data_denmark$Year,
      labels = data_denmark$Property_Price_to_Income_Ratio,
      pos = 3, cex = 0.8)
 
+# All Countries
+par(mar = c(5, 5, 5, 8) + 0.1) # c(bottom, left, top, right)
+
+plot(NA, 
+     xlim = range(years), 
+     ylim = ylim_data_pptir,
+     xlab = "Year", 
+     ylab = "Property Price To Income Ratio",
+     main = "Property Price To Income Ratio (2014-2021)",
+     xaxt = "n",
+     las = 1)
+
+axis(1, at = years, labels = years)
+
+lines(data_brazil$Year, data_brazil$Property_Price_to_Income_Ratio, 
+      type = "o", col = "darkgreen", lwd = 2, pch = 19)
+
+lines(data_india$Year, data_india$Property_Price_to_Income_Ratio, 
+      type = "o", col = "darkred", lwd = 2, pch = 19)
+
+lines(data_lebanon$Year, data_lebanon$Property_Price_to_Income_Ratio, 
+      type = "o", col = "darkblue", lwd = 2, pch = 19)
+
+lines(data_turkey$Year, data_turkey$Property_Price_to_Income_Ratio, 
+      type = "o", col = "orange2", lwd = 2, pch = 19)
+
+lines(data_denmark$Year, data_denmark$Property_Price_to_Income_Ratio, 
+      type = "o", col = "purple3", lwd = 2, pch = 19)
+
+legend("topright",
+       inset = c(-0.25, 0),
+       legend = c("Brazil", "India", "Lebanon", "Turkey", "Denmark"),
+       col = c("darkgreen", "darkred", "darkblue", "orange2", "purple3"),
+       lwd = 2, 
+       pch = 19,
+       bty = "n",
+       xpd = TRUE)
+
+grid(nx = NA, ny = NULL, lty = 2, col = "lightgray")
+
 # ----- Charting the dynamics of the Traffic Commute Time Index -----
+dev.off()
+dev.new()
+
 ylim_data_tcti <- c(min(data_brazil$Traffic_Commute_Time_Index,
                          data_india$Traffic_Commute_Time_Index,
                          data_lebanon$Traffic_Commute_Time_Index,
@@ -884,7 +1146,50 @@ text(data_denmark$Year,
      labels = data_denmark$Traffic_Commute_Time_Index,
      pos = 3, cex = 0.8)
 
+# All Countries
+par(mar = c(5, 5, 5, 8) + 0.1) # c(bottom, left, top, right)
+
+plot(NA, 
+     xlim = range(years), 
+     ylim = ylim_data_tcti,
+     xlab = "Year", 
+     ylab = "Traffic Commute Time Index",
+     main = "Traffic Commute Time Index (2014-2021)",
+     xaxt = "n",
+     las = 1)
+
+axis(1, at = years, labels = years)
+
+lines(data_brazil$Year, data_brazil$Traffic_Commute_Time_Index, 
+      type = "o", col = "darkgreen", lwd = 2, pch = 19)
+
+lines(data_india$Year, data_india$Traffic_Commute_Time_Index, 
+      type = "o", col = "darkred", lwd = 2, pch = 19)
+
+lines(data_lebanon$Year, data_lebanon$Traffic_Commute_Time_Index, 
+      type = "o", col = "darkblue", lwd = 2, pch = 19)
+
+lines(data_turkey$Year, data_turkey$Traffic_Commute_Time_Index, 
+      type = "o", col = "orange2", lwd = 2, pch = 19)
+
+lines(data_denmark$Year, data_denmark$Traffic_Commute_Time_Index, 
+      type = "o", col = "purple3", lwd = 2, pch = 19)
+
+legend("topright",
+       inset = c(-0.25, 0),
+       legend = c("Brazil", "India", "Lebanon", "Turkey", "Denmark"),
+       col = c("darkgreen", "darkred", "darkblue", "orange2", "purple3"),
+       lwd = 2, 
+       pch = 19,
+       bty = "n",
+       xpd = TRUE)
+
+grid(nx = NA, ny = NULL, lty = 2, col = "lightgray")
+
 # ----- Charting the dynamics of the Pollution Index  -----
+dev.off()
+dev.new()
+
 ylim_data_pi <- c(min(data_brazil$Pollution_Index,
                         data_india$Pollution_Index,
                         data_lebanon$Pollution_Index,
@@ -991,7 +1296,50 @@ text(data_denmark$Year,
      labels = data_denmark$Pollution_Index,
      pos = 3, cex = 0.8)
 
+# All Countries
+par(mar = c(5, 5, 5, 8) + 0.1) # c(bottom, left, top, right)
+
+plot(NA, 
+     xlim = range(years), 
+     ylim = ylim_data_pi,
+     xlab = "Year", 
+     ylab = "Pollution Index",
+     main = "Pollution Index (2014-2021)",
+     xaxt = "n",
+     las = 1)
+
+axis(1, at = years, labels = years)
+
+lines(data_brazil$Year, data_brazil$Pollution_Index, 
+      type = "o", col = "darkgreen", lwd = 2, pch = 19)
+
+lines(data_india$Year, data_india$Pollution_Index, 
+      type = "o", col = "darkred", lwd = 2, pch = 19)
+
+lines(data_lebanon$Year, data_lebanon$Pollution_Index, 
+      type = "o", col = "darkblue", lwd = 2, pch = 19)
+
+lines(data_turkey$Year, data_turkey$Pollution_Index, 
+      type = "o", col = "orange2", lwd = 2, pch = 19)
+
+lines(data_denmark$Year, data_denmark$Pollution_Index, 
+      type = "o", col = "purple3", lwd = 2, pch = 19)
+
+legend("topright",
+       inset = c(-0.25, 0),
+       legend = c("Brazil", "India", "Lebanon", "Turkey", "Denmark"),
+       col = c("darkgreen", "darkred", "darkblue", "orange2", "purple3"),
+       lwd = 2, 
+       pch = 19,
+       bty = "n",
+       xpd = TRUE)
+
+grid(nx = NA, ny = NULL, lty = 2, col = "lightgray")
+
 # ----- Charting the dynamics of the Climate Index  -----
+dev.off()
+dev.new()
+
 ylim_data_ci <- c(min(data_brazil$Climate_Index,
                       data_india$Climate_Index,
                       data_lebanon$Climate_Index,
@@ -1097,3 +1445,44 @@ text(data_denmark$Year,
      data_denmark$Climate_Index,
      labels = data_denmark$Climate_Index,
      pos = 3, cex = 0.8)
+
+# All Countries
+par(mar = c(5, 5, 5, 8) + 0.1) # c(bottom, left, top, right)
+
+plot(NA, 
+     xlim = range(years), 
+     ylim = ylim_data_ci,
+     xlab = "Year", 
+     ylab = "Climate Index",
+     main = "Climate Index (2014-2021)",
+     xaxt = "n",
+     las = 1)
+
+axis(1, at = years, labels = years)
+
+lines(data_brazil$Year, data_brazil$Climate_Index, 
+      type = "o", col = "darkgreen", lwd = 2, pch = 19)
+
+lines(data_india$Year, data_india$Climate_Index, 
+      type = "o", col = "darkred", lwd = 2, pch = 19)
+
+lines(data_lebanon$Year, data_lebanon$Climate_Index, 
+      type = "o", col = "darkblue", lwd = 2, pch = 19)
+
+lines(data_turkey$Year, data_turkey$Climate_Index, 
+      type = "o", col = "orange2", lwd = 2, pch = 19)
+
+lines(data_denmark$Year, data_denmark$Climate_Index, 
+      type = "o", col = "purple3", lwd = 2, pch = 19)
+
+legend("topright",
+       inset = c(-0.25, 0),
+       legend = c("Brazil", "India", "Lebanon", "Turkey", "Denmark"),
+       col = c("darkgreen", "darkred", "darkblue", "orange2", "purple3"),
+       lwd = 2, 
+       pch = 19,
+       bty = "n",
+       xpd = TRUE)
+
+grid(nx = NA, ny = NULL, lty = 2, col = "lightgray")
+
