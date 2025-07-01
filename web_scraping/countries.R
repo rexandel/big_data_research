@@ -135,3 +135,965 @@ data_india
 data_lebanon
 data_turkey
 data_denmark
+
+# ----- Charting the dynamics of the Quality Of Life Index -----
+ylim_data_qoli <- c(min(data_brazil$Quality_of_Life_Index,
+                        data_india$Quality_of_Life_Index,
+                        data_lebanon$Quality_of_Life_Index,
+                        data_turkey$Quality_of_Life_Index,
+                        data_denmark$Quality_of_Life_Index) - 5,
+                    max(data_brazil$Quality_of_Life_Index,
+                        data_india$Quality_of_Life_Index,
+                        data_lebanon$Quality_of_Life_Index,
+                        data_turkey$Quality_of_Life_Index,
+                        data_denmark$Quality_of_Life_Index) + 10)
+
+# Brazil
+plot(data_brazil$Year,
+     data_brazil$Quality_of_Life_Index,
+     type = "o",
+     col = "darkgreen",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Quality of Life Index",
+     main = "Brazil: Quality of Life Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_qoli)
+
+axis(1, at = data_brazil$Year, labels = data_brazil$Year)
+text(data_brazil$Year,
+     data_brazil$Quality_of_Life_Index,
+     labels = data_brazil$Quality_of_Life_Index,
+     pos = 3, cex = 0.8)
+
+# India
+plot(data_india$Year,
+     data_india$Quality_of_Life_Index,
+     type = "o",
+     col = "darkred",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Quality of Life Index",
+     main = "India: Quality of Life Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_qoli)
+
+axis(1, at = data_india$Year, labels = data_india$Year)
+text(data_india$Year,
+     data_india$Quality_of_Life_Index,
+     labels = data_india$Quality_of_Life_Index,
+     pos = 3, cex = 0.8)
+
+# Lebanon
+plot(data_lebanon$Year,
+     data_lebanon$Quality_of_Life_Index,
+     type = "o",
+     col = "darkblue",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Quality of Life Index",
+     main = "Lebanon: Quality of Life Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_qoli)
+
+axis(1, at = data_lebanon$Year, labels = data_lebanon$Year)
+text(data_lebanon$Year,
+     data_lebanon$Quality_of_Life_Index,
+     labels = data_lebanon$Quality_of_Life_Index,
+     pos = 3, cex = 0.8)
+
+# Turkey
+plot(data_turkey$Year,
+     data_turkey$Quality_of_Life_Index,
+     type = "o",
+     col = "orange2",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Quality of Life Index",
+     main = "Turkey: Quality of Life Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_qoli)
+
+axis(1, at = data_turkey$Year, labels = data_turkey$Year)
+text(data_turkey$Year,
+     data_turkey$Quality_of_Life_Index,
+     labels = data_turkey$Quality_of_Life_Index,
+     pos = 3, cex = 0.8)
+
+# Denmark
+plot(data_denmark$Year,
+     data_denmark$Quality_of_Life_Index,
+     type = "o",
+     col = "purple3",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Quality of Life Index",
+     main = "Denmark: Quality of Life Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_qoli)
+
+axis(1, at = data_denmark$Year, labels = data_denmark$Year)
+text(data_denmark$Year,
+     data_denmark$Quality_of_Life_Index,
+     labels = data_denmark$Quality_of_Life_Index,
+     pos = 3, cex = 0.8)
+
+# ----- Charting the dynamics of the Purchasing Power Index -----
+ylim_data_ppi <- c(min(data_brazil$Purchasing_Power_Index,
+                       data_india$Purchasing_Power_Index,
+                       data_lebanon$Purchasing_Power_Index,
+                       data_turkey$Purchasing_Power_Index,
+                       data_denmark$Purchasing_Power_Index) - 5,
+                   max(data_brazil$Purchasing_Power_Index,
+                       data_india$Purchasing_Power_Index,
+                       data_lebanon$Purchasing_Power_Index,
+                       data_turkey$Purchasing_Power_Index,
+                       data_denmark$Purchasing_Power_Index) + 10)
+
+# Brazil
+plot(data_brazil$Year,
+     data_brazil$Purchasing_Power_Index,
+     type = "o",
+     col = "darkgreen",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Purchasing Power Index",
+     main = "Brazil: Purchasing Power Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_ppi)
+
+axis(1, at = data_brazil$Year, labels = data_brazil$Year)
+text(data_brazil$Year,
+     data_brazil$Purchasing_Power_Index,
+     labels = data_brazil$Purchasing_Power_Index,
+     pos = 3, cex = 0.8)
+
+# India
+plot(data_india$Year,
+     data_india$Purchasing_Power_Index,
+     type = "o",
+     col = "darkred",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Purchasing Power Index",
+     main = "India: Purchasing Power Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_ppi)
+
+axis(1, at = data_india$Year, labels = data_india$Year)
+text(data_india$Year,
+     data_india$Purchasing_Power_Index,
+     labels = data_india$Purchasing_Power_Index,
+     pos = 3, cex = 0.8)
+
+# Lebanon
+plot(data_lebanon$Year,
+     data_lebanon$Purchasing_Power_Index,
+     type = "o",
+     col = "darkblue",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Purchasing Power Index",
+     main = "Lebanon: Purchasing Power Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_ppi)
+
+axis(1, at = data_lebanon$Year, labels = data_lebanon$Year)
+text(data_lebanon$Year,
+     data_lebanon$Purchasing_Power_Index,
+     labels = data_lebanon$Purchasing_Power_Index,
+     pos = 3, cex = 0.8)
+
+# Turkey
+plot(data_turkey$Year,
+     data_turkey$Purchasing_Power_Index,
+     type = "o",
+     col = "orange2",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Purchasing Power Index",
+     main = "Turkey: Purchasing Power Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_ppi)
+
+axis(1, at = data_turkey$Year, labels = data_turkey$Year)
+text(data_turkey$Year,
+     data_turkey$Purchasing_Power_Index,
+     labels = data_turkey$Purchasing_Power_Index,
+     pos = 3, cex = 0.8)
+
+# Denmark
+plot(data_denmark$Year,
+     data_denmark$Purchasing_Power_Index,
+     type = "o",
+     col = "purple3",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Purchasing Power Index",
+     main = "Denmark: Purchasing Power Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_ppi)
+
+axis(1, at = data_denmark$Year, labels = data_denmark$Year)
+text(data_denmark$Year,
+     data_denmark$Purchasing_Power_Index,
+     labels = data_denmark$Purchasing_Power_Index,
+     pos = 3, cex = 0.8)
+
+# ----- Charting the dynamics of the Safety Index -----
+ylim_data_si <- c(min(data_brazil$Safety_Index,
+                       data_india$Safety_Index,
+                       data_lebanon$Safety_Index,
+                       data_turkey$Safety_Index,
+                       data_denmark$Safety_Index) - 5,
+                   max(data_brazil$Safety_Index,
+                       data_india$Safety_Index,
+                       data_lebanon$Safety_Index,
+                       data_turkey$Safety_Index,
+                       data_denmark$Safety_Index) + 10)
+
+# Brazil
+plot(data_brazil$Year,
+     data_brazil$Safety_Index,
+     type = "o",
+     col = "darkgreen",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Safety Index",
+     main = "Brazil: Safety Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_si)
+
+axis(1, at = data_brazil$Year, labels = data_brazil$Year)
+text(data_brazil$Year,
+     data_brazil$Safety_Index,
+     labels = data_brazil$Safety_Index,
+     pos = 3, cex = 0.8)
+
+# India
+plot(data_india$Year,
+     data_india$Safety_Index,
+     type = "o",
+     col = "darkred",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Safety Index",
+     main = "India: Safety Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_si)
+
+axis(1, at = data_india$Year, labels = data_india$Year)
+text(data_india$Year,
+     data_india$Safety_Index,
+     labels = data_india$Safety_Index,
+     pos = 3, cex = 0.8)
+
+# Lebanon
+plot(data_lebanon$Year,
+     data_lebanon$Safety_Index,
+     type = "o",
+     col = "darkblue",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Safety Index",
+     main = "Lebanon: Safety Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_si)
+
+axis(1, at = data_lebanon$Year, labels = data_lebanon$Year)
+text(data_lebanon$Year,
+     data_lebanon$Safety_Index,
+     labels = data_lebanon$Safety_Index,
+     pos = 3, cex = 0.8)
+
+# Turkey
+plot(data_turkey$Year,
+     data_turkey$Safety_Index,
+     type = "o",
+     col = "orange2",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Safety Index",
+     main = "Turkey: Safety Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_si)
+
+axis(1, at = data_turkey$Year, labels = data_turkey$Year)
+text(data_turkey$Year,
+     data_turkey$Safety_Index,
+     labels = data_turkey$Safety_Index,
+     pos = 3, cex = 0.8)
+
+# Denmark
+plot(data_denmark$Year,
+     data_denmark$Safety_Index,
+     type = "o",
+     col = "purple3",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Safety Index",
+     main = "Denmark: Safety Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_si)
+
+axis(1, at = data_denmark$Year, labels = data_denmark$Year)
+text(data_denmark$Year,
+     data_denmark$Safety_Index,
+     labels = data_denmark$Safety_Index,
+     pos = 3, cex = 0.8)
+
+# ----- Charting the dynamics of the Health Care Index -----
+ylim_data_hci <- c(min(data_brazil$Health_Care_Index,
+                      data_india$Health_Care_Index,
+                      data_lebanon$Health_Care_Index,
+                      data_turkey$Health_Care_Index,
+                      data_denmark$Health_Care_Index) - 5,
+                  max(data_brazil$Health_Care_Index,
+                      data_india$Health_Care_Index,
+                      data_lebanon$Health_Care_Index,
+                      data_turkey$Health_Care_Index,
+                      data_denmark$Health_Care_Index) + 10)
+
+# Brazil
+plot(data_brazil$Year,
+     data_brazil$Health_Care_Index,
+     type = "o",
+     col = "darkgreen",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Health Care Index",
+     main = "Brazil: Health Care Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_hci)
+
+axis(1, at = data_brazil$Year, labels = data_brazil$Year)
+text(data_brazil$Year,
+     data_brazil$Health_Care_Index,
+     labels = data_brazil$Health_Care_Index,
+     pos = 3, cex = 0.8)
+
+# India
+plot(data_india$Year,
+     data_india$Health_Care_Index,
+     type = "o",
+     col = "darkred",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Health Care Index",
+     main = "India: Health Care Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_hci)
+
+axis(1, at = data_india$Year, labels = data_india$Year)
+text(data_india$Year,
+     data_india$Health_Care_Index,
+     labels = data_india$Health_Care_Index,
+     pos = 3, cex = 0.8)
+
+# Lebanon
+plot(data_lebanon$Year,
+     data_lebanon$Health_Care_Index,
+     type = "o",
+     col = "darkblue",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Health Care Index",
+     main = "Lebanon: Health Care Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_hci)
+
+axis(1, at = data_lebanon$Year, labels = data_lebanon$Year)
+text(data_lebanon$Year,
+     data_lebanon$Health_Care_Index,
+     labels = data_lebanon$Health_Care_Index,
+     pos = 3, cex = 0.8)
+
+# Turkey
+plot(data_turkey$Year,
+     data_turkey$Health_Care_Index,
+     type = "o",
+     col = "orange2",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Health Care Index",
+     main = "Turkey: Health Care Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_hci)
+
+axis(1, at = data_turkey$Year, labels = data_turkey$Year)
+text(data_turkey$Year,
+     data_turkey$Health_Care_Index,
+     labels = data_turkey$Health_Care_Index,
+     pos = 3, cex = 0.8)
+
+# Denmark
+plot(data_denmark$Year,
+     data_denmark$Health_Care_Index,
+     type = "o",
+     col = "purple3",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Health Care Index",
+     main = "Denmark: Health Care Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_hci)
+
+axis(1, at = data_denmark$Year, labels = data_denmark$Year)
+text(data_denmark$Year,
+     data_denmark$Health_Care_Index,
+     labels = data_denmark$Health_Care_Index,
+     pos = 3, cex = 0.8)
+
+# ----- Charting the dynamics of the Cost Of Living Index -----
+ylim_data_coli <- c(min(data_brazil$Cost_of_Living_Index,
+                       data_india$Cost_of_Living_Index,
+                       data_lebanon$Cost_of_Living_Index,
+                       data_turkey$Cost_of_Living_Index,
+                       data_denmark$Cost_of_Living_Index) - 5,
+                   max(data_brazil$Cost_of_Living_Index,
+                       data_india$Cost_of_Living_Index,
+                       data_lebanon$Cost_of_Living_Index,
+                       data_turkey$Cost_of_Living_Index,
+                       data_denmark$Cost_of_Living_Index) + 10)
+
+# Brazil
+plot(data_brazil$Year,
+     data_brazil$Cost_of_Living_Index,
+     type = "o",
+     col = "darkgreen",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Cost Of Living Index",
+     main = "Brazil: Cost Of Living Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_coli)
+
+axis(1, at = data_brazil$Year, labels = data_brazil$Year)
+text(data_brazil$Year,
+     data_brazil$Cost_of_Living_Index,
+     labels = data_brazil$Cost_of_Living_Index,
+     pos = 3, cex = 0.8)
+
+# India
+plot(data_india$Year,
+     data_india$Cost_of_Living_Index,
+     type = "o",
+     col = "darkred",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Cost Of Living Index",
+     main = "India: Cost Of Living Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_coli)
+
+axis(1, at = data_india$Year, labels = data_india$Year)
+text(data_india$Year,
+     data_india$Cost_of_Living_Index,
+     labels = data_india$Cost_of_Living_Index,
+     pos = 3, cex = 0.8)
+
+# Lebanon
+plot(data_lebanon$Year,
+     data_lebanon$Cost_of_Living_Index,
+     type = "o",
+     col = "darkblue",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Cost Of Living Index",
+     main = "Lebanon: Cost Of Living Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_coli)
+
+axis(1, at = data_lebanon$Year, labels = data_lebanon$Year)
+text(data_lebanon$Year,
+     data_lebanon$Cost_of_Living_Index,
+     labels = data_lebanon$Cost_of_Living_Index,
+     pos = 3, cex = 0.8)
+
+# Turkey
+plot(data_turkey$Year,
+     data_turkey$Cost_of_Living_Index,
+     type = "o",
+     col = "orange2",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Cost Of Living Index",
+     main = "Turkey: Cost Of Living Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_coli)
+
+axis(1, at = data_turkey$Year, labels = data_turkey$Year)
+text(data_turkey$Year,
+     data_turkey$Cost_of_Living_Index,
+     labels = data_turkey$Cost_of_Living_Index,
+     pos = 3, cex = 0.8)
+
+# Denmark
+plot(data_denmark$Year,
+     data_denmark$Cost_of_Living_Index,
+     type = "o",
+     col = "purple3",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Cost Of Living Index",
+     main = "Denmark: Cost Of Living Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_coli)
+
+axis(1, at = data_denmark$Year, labels = data_denmark$Year)
+text(data_denmark$Year,
+     data_denmark$Cost_of_Living_Index,
+     labels = data_denmark$Cost_of_Living_Index,
+     pos = 3, cex = 0.8)
+# ----- Charting the dynamics of the Property Price To Income Ratio -----
+ylim_data_pptir <- c(min(data_brazil$Property_Price_to_Income_Ratio,
+                       data_india$Property_Price_to_Income_Ratio,
+                       data_lebanon$Property_Price_to_Income_Ratio,
+                       data_turkey$Property_Price_to_Income_Ratio,
+                       data_denmark$Property_Price_to_Income_Ratio) - 5,
+                   max(data_brazil$Property_Price_to_Income_Ratio,
+                       data_india$Property_Price_to_Income_Ratio,
+                       data_lebanon$Property_Price_to_Income_Ratio,
+                       data_turkey$Property_Price_to_Income_Ratio,
+                       data_denmark$Property_Price_to_Income_Ratio) + 10)
+
+# Brazil
+plot(data_brazil$Year,
+     data_brazil$Property_Price_to_Income_Ratio,
+     type = "o",
+     col = "darkgreen",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Property Price To Income Ratio",
+     main = "Brazil: Property Price To Income Ratio (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_pptir)
+
+axis(1, at = data_brazil$Year, labels = data_brazil$Year)
+text(data_brazil$Year,
+     data_brazil$Property_Price_to_Income_Ratio,
+     labels = data_brazil$Property_Price_to_Income_Ratio,
+     pos = 3, cex = 0.8)
+
+# India
+plot(data_india$Year,
+     data_india$Property_Price_to_Income_Ratio,
+     type = "o",
+     col = "darkred",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Property Price To Income Ratio",
+     main = "India: Property Price To Income Ratio (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_pptir)
+
+axis(1, at = data_india$Year, labels = data_india$Year)
+text(data_india$Year,
+     data_india$Property_Price_to_Income_Ratio,
+     labels = data_india$Property_Price_to_Income_Ratio,
+     pos = 3, cex = 0.8)
+
+# Lebanon
+plot(data_lebanon$Year,
+     data_lebanon$Property_Price_to_Income_Ratio,
+     type = "o",
+     col = "darkblue",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Property Price To Income Ratio",
+     main = "Lebanon: Property Price To Income Ratio (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_pptir)
+
+axis(1, at = data_lebanon$Year, labels = data_lebanon$Year)
+text(data_lebanon$Year,
+     data_lebanon$Property_Price_to_Income_Ratio,
+     labels = data_lebanon$Property_Price_to_Income_Ratio,
+     pos = 3, cex = 0.8)
+
+# Turkey
+plot(data_turkey$Year,
+     data_turkey$Property_Price_to_Income_Ratio,
+     type = "o",
+     col = "orange2",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Property Price To Income Ratio",
+     main = "Turkey: Property Price To Income Ratio (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_pptir)
+
+axis(1, at = data_turkey$Year, labels = data_turkey$Year)
+text(data_turkey$Year,
+     data_turkey$Property_Price_to_Income_Ratio,
+     labels = data_turkey$Property_Price_to_Income_Ratio,
+     pos = 3, cex = 0.8)
+
+# Denmark
+plot(data_denmark$Year,
+     data_denmark$Property_Price_to_Income_Ratio,
+     type = "o",
+     col = "purple3",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Property Price To Income Ratio",
+     main = "Denmark: Property Price To Income Ratio (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_pptir)
+
+axis(1, at = data_denmark$Year, labels = data_denmark$Year)
+text(data_denmark$Year,
+     data_denmark$Property_Price_to_Income_Ratio,
+     labels = data_denmark$Property_Price_to_Income_Ratio,
+     pos = 3, cex = 0.8)
+
+# ----- Charting the dynamics of the Traffic Commute Time Index -----
+ylim_data_tcti <- c(min(data_brazil$Traffic_Commute_Time_Index,
+                         data_india$Traffic_Commute_Time_Index,
+                         data_lebanon$Traffic_Commute_Time_Index,
+                         data_turkey$Traffic_Commute_Time_Index,
+                         data_denmark$Traffic_Commute_Time_Index) - 5,
+                     max(data_brazil$Traffic_Commute_Time_Index,
+                         data_india$Traffic_Commute_Time_Index,
+                         data_lebanon$Traffic_Commute_Time_Index,
+                         data_turkey$Traffic_Commute_Time_Index,
+                         data_denmark$Traffic_Commute_Time_Index) + 10)
+
+# Brazil
+plot(data_brazil$Year,
+     data_brazil$Traffic_Commute_Time_Index,
+     type = "o",
+     col = "darkgreen",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Traffic Commute Time Index",
+     main = "Brazil: Traffic Commute Time Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_tcti)
+
+axis(1, at = data_brazil$Year, labels = data_brazil$Year)
+text(data_brazil$Year,
+     data_brazil$Traffic_Commute_Time_Index,
+     labels = data_brazil$Traffic_Commute_Time_Index,
+     pos = 3, cex = 0.8)
+
+# India
+plot(data_india$Year,
+     data_india$Traffic_Commute_Time_Index,
+     type = "o",
+     col = "darkred",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Traffic Commute Time Index",
+     main = "India: Traffic Commute Time Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_tcti)
+
+axis(1, at = data_india$Year, labels = data_india$Year)
+text(data_india$Year,
+     data_india$Traffic_Commute_Time_Index,
+     labels = data_india$Traffic_Commute_Time_Index,
+     pos = 3, cex = 0.8)
+
+# Lebanon
+plot(data_lebanon$Year,
+     data_lebanon$Traffic_Commute_Time_Index,
+     type = "o",
+     col = "darkblue",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Traffic Commute Time Index",
+     main = "Lebanon: Traffic Commute Time Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_tcti)
+
+axis(1, at = data_lebanon$Year, labels = data_lebanon$Year)
+text(data_lebanon$Year,
+     data_lebanon$Traffic_Commute_Time_Index,
+     labels = data_lebanon$Traffic_Commute_Time_Index,
+     pos = 3, cex = 0.8)
+
+# Turkey
+plot(data_turkey$Year,
+     data_turkey$Traffic_Commute_Time_Index,
+     type = "o",
+     col = "orange2",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Traffic Commute Time Index",
+     main = "Turkey: Traffic Commute Time Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_tcti)
+
+axis(1, at = data_turkey$Year, labels = data_turkey$Year)
+text(data_turkey$Year,
+     data_turkey$Traffic_Commute_Time_Index,
+     labels = data_turkey$Traffic_Commute_Time_Index,
+     pos = 3, cex = 0.8)
+
+# Denmark
+plot(data_denmark$Year,
+     data_denmark$Traffic_Commute_Time_Index,
+     type = "o",
+     col = "purple3",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Traffic Commute Time Index",
+     main = "Denmark: Traffic Commute Time Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_tcti)
+
+axis(1, at = data_denmark$Year, labels = data_denmark$Year)
+text(data_denmark$Year,
+     data_denmark$Traffic_Commute_Time_Index,
+     labels = data_denmark$Traffic_Commute_Time_Index,
+     pos = 3, cex = 0.8)
+
+# ----- Charting the dynamics of the Pollution Index  -----
+ylim_data_pi <- c(min(data_brazil$Pollution_Index,
+                        data_india$Pollution_Index,
+                        data_lebanon$Pollution_Index,
+                        data_turkey$Pollution_Index,
+                        data_denmark$Pollution_Index) - 5,
+                    max(data_brazil$Pollution_Index,
+                        data_india$Pollution_Index,
+                        data_lebanon$Pollution_Index,
+                        data_turkey$Pollution_Index,
+                        data_denmark$Pollution_Index) + 10)
+
+# Brazil
+plot(data_brazil$Year,
+     data_brazil$Pollution_Index,
+     type = "o",
+     col = "darkgreen",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Pollution Index",
+     main = "Brazil: Pollution Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_pi)
+
+axis(1, at = data_brazil$Year, labels = data_brazil$Year)
+text(data_brazil$Year,
+     data_brazil$Pollution_Index,
+     labels = data_brazil$Pollution_Index,
+     pos = 3, cex = 0.8)
+
+# India
+plot(data_india$Year,
+     data_india$Pollution_Index,
+     type = "o",
+     col = "darkred",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Pollution Index",
+     main = "India: Pollution Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_pi)
+
+axis(1, at = data_india$Year, labels = data_india$Year)
+text(data_india$Year,
+     data_india$Pollution_Index,
+     labels = data_india$Pollution_Index,
+     pos = 3, cex = 0.8)
+
+# Lebanon
+plot(data_lebanon$Year,
+     data_lebanon$Pollution_Index,
+     type = "o",
+     col = "darkblue",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Pollution Index",
+     main = "Lebanon: Pollution Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_pi)
+
+axis(1, at = data_lebanon$Year, labels = data_lebanon$Year)
+text(data_lebanon$Year,
+     data_lebanon$Pollution_Index,
+     labels = data_lebanon$Pollution_Index,
+     pos = 3, cex = 0.8)
+
+# Turkey
+plot(data_turkey$Year,
+     data_turkey$Pollution_Index,
+     type = "o",
+     col = "orange2",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Pollution Index",
+     main = "Turkey: Pollution Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_pi)
+
+axis(1, at = data_turkey$Year, labels = data_turkey$Year)
+text(data_turkey$Year,
+     data_turkey$Pollution_Index,
+     labels = data_turkey$Pollution_Index,
+     pos = 3, cex = 0.8)
+
+# Denmark
+plot(data_denmark$Year,
+     data_denmark$Pollution_Index,
+     type = "o",
+     col = "purple3",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Pollution Index",
+     main = "Denmark: Pollution Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_pi)
+
+axis(1, at = data_denmark$Year, labels = data_denmark$Year)
+text(data_denmark$Year,
+     data_denmark$Pollution_Index,
+     labels = data_denmark$Pollution_Index,
+     pos = 3, cex = 0.8)
+
+# ----- Charting the dynamics of the Climate Index  -----
+ylim_data_ci <- c(min(data_brazil$Climate_Index,
+                      data_india$Climate_Index,
+                      data_lebanon$Climate_Index,
+                      data_turkey$Climate_Index,
+                      data_denmark$Climate_Index) - 5,
+                  max(data_brazil$Climate_Index,
+                      data_india$Climate_Index,
+                      data_lebanon$Climate_Index,
+                      data_turkey$Climate_Index,
+                      data_denmark$Climate_Index) + 10)
+
+# Brazil
+plot(data_brazil$Year,
+     data_brazil$Climate_Index,
+     type = "o",
+     col = "darkgreen",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Climate Index",
+     main = "Brazil: Climate Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_ci)
+
+axis(1, at = data_brazil$Year, labels = data_brazil$Year)
+text(data_brazil$Year,
+     data_brazil$Climate_Index,
+     labels = data_brazil$Climate_Index,
+     pos = 3, cex = 0.8)
+
+# India
+plot(data_india$Year,
+     data_india$Climate_Index,
+     type = "o",
+     col = "darkred",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Climate Index",
+     main = "India: Climate Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_ci)
+
+axis(1, at = data_india$Year, labels = data_india$Year)
+text(data_india$Year,
+     data_india$Climate_Index,
+     labels = data_india$Climate_Index,
+     pos = 3, cex = 0.8)
+
+# Lebanon
+plot(data_lebanon$Year,
+     data_lebanon$Climate_Index,
+     type = "o",
+     col = "darkblue",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Climate Index",
+     main = "Lebanon: Climate Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_ci)
+
+axis(1, at = data_lebanon$Year, labels = data_lebanon$Year)
+text(data_lebanon$Year,
+     data_lebanon$Climate_Index,
+     labels = data_lebanon$Climate_Index,
+     pos = 3, cex = 0.8)
+
+# Turkey
+plot(data_turkey$Year,
+     data_turkey$Climate_Index,
+     type = "o",
+     col = "orange2",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Climate Index",
+     main = "Turkey: Climate Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_ci)
+
+axis(1, at = data_turkey$Year, labels = data_turkey$Year)
+text(data_turkey$Year,
+     data_turkey$Climate_Index,
+     labels = data_turkey$Climate_Index,
+     pos = 3, cex = 0.8)
+
+# Denmark
+plot(data_denmark$Year,
+     data_denmark$Climate_Index,
+     type = "o",
+     col = "purple3",
+     lwd = 2,
+     pch = 19,
+     xlab = "Year",
+     ylab = "Climate Index",
+     main = "Denmark: Climate Index (2014-2021)",
+     xaxt = "n",
+     ylim = ylim_data_ci)
+
+axis(1, at = data_denmark$Year, labels = data_denmark$Year)
+text(data_denmark$Year,
+     data_denmark$Climate_Index,
+     labels = data_denmark$Climate_Index,
+     pos = 3, cex = 0.8)
