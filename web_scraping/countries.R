@@ -1,3 +1,7 @@
+# ----- Setting up working directory -----
+setwd("C:/Users/rexandel/Desktop/GitHub/big_data_research/web_scraping/")
+getwd()
+
 # ----- Connecting the necessary libraries -----
 library(rvest)
 

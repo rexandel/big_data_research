@@ -1,17 +1,37 @@
+# ----- Setting up working directory -----
+setwd("C:/Users/rexandel/Desktop/GitHub/big_data_research/web_scraping/")
+getwd()
+
 # ----- Connecting the necessary libraries -----
 library(rvest)
+library(openxlsx)
 
+# ----- Downloading page from the Internet -----
 url <- "https://www.sputnik8.com/ru/moscow"
 filename <- "guided_tours.html"
 download.file(url, destfile = filename, quiet = TRUE)
 
+# ----- Getting downloaded page -----
 content <- read_html(filename, encoding = "UTF-8")
 
+# ----- Getting all containers responsible for tours -----
 items <- content %>% 
   html_nodes(xpath = '//div[contains(@class, "items-grid_us0X") and contains(@class, "items-grid_size_3") and contains(@class, "gtm_main-block_listing")]') %>%
   html_children()
 
+# ----- Initialize empty data frame -----
+tours <- data.frame(
+  Title = character(),
+  Description = character(),
+  Rating = character(),
+  First_Date = character(),
+  Second_Date = character(),
+  Duration = character(),
+  Link = character(),
+  stringsAsFactors = FALSE
+)
 
+# ----- Getting data about specific tour -----
 for (item in items) {
   # Getting tour name and link
   link_container <- item %>% html_node(xpath = './/a[@role="link"]')
@@ -20,7 +40,7 @@ for (item in items) {
     html_node(xpath = './/div[contains(@class, "heading_")]') %>%
     html_text(trim = TRUE)
 
-  href <- paste0("https://www.sputnik8.com/", link_node %>% html_attr("href"))
+  href <- paste0("https://www.sputnik8.com", link_container %>% html_attr("href"))
   
   # Getting tour rating
   rating <- item %>%
@@ -55,11 +75,30 @@ for (item in items) {
   
   duration <- details[grep("ч\\.", details)]
   
-  print(title)
-  print(description)
-  print(rating)
-  print(first_date)
-  print(second_date)
-  print(duration)
-  print(href)
+  tours <- rbind(tours,
+                 data.frame(
+                   Title = title,
+                   Description = description,
+                   Rating = rating,
+                   First_Date = first_date,
+                   Second_Date = second_date,
+                   Duration = duration,
+                   Link = href,
+                   stringsAsFactors = FALSE
+                   )
+                 )
 }
+
+# ----- Deleting a loaded page -----
+file.remove(filename)
+
+# ----- Viewing information about received tours -----
+tours
+View(tours)
+
+# ----- Exporting information about received tours -----
+write.xlsx(tours, "moscow_tours.xlsx", 
+           sheetName = "Tours",
+           colNames = TRUE,
+           rowNames = FALSE, 
+           append = FALSE)
