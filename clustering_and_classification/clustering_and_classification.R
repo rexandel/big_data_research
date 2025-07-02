@@ -18,6 +18,8 @@ getwd()
 # ----- Loading the initial data set -----
 students <- read.csv("students_data.csv", sep = ",")
 
+# ------ ### 5.1 ### ------
+
 # ----- Getting metrics for descriptive data analysis -----
 str(students)
 summary(students)
@@ -185,6 +187,14 @@ rect.hclust(hc, k = 3, border = c("red", "blue", "green"))
 par(mfrow = c(1, 1))
 
 # ----- Working with individual clusters -----
+km_res <- kmeans(numeric_data, centers = 3, nstart = 25)
+students_clustered <- students %>%
+  mutate(cluster = as.factor(km_res$cluster))
+
+cluster_means <- students_clustered %>%
+  group_by(cluster) %>%
+  summarise(across(where(is.numeric), mean))
+
 # Построение средних значений в каждом кластере
 # GGPLOT
 cluster_means_long <- cluster_means %>%
@@ -341,3 +351,47 @@ plot_ly(students_clustered,
          scene = list(xaxis = list(title = "G1"),
                       yaxis = list(title = "G2"),
                       zaxis = list(title = "G3")))
+
+# ------ ### 5.2 ### ------
+library(e1071)
+library(party)
+library(randomForest)
+
+students_clustered$cluster <- as.factor(students_clustered$cluster)
+
+# Делим выборку на обучающую и тестовую
+set.seed(42)
+ind <- sample(2, nrow(students_clustered), replace = TRUE, prob = c(0.7, 0.3))
+trainData <- students_clustered[ind == 1, ]
+testData <- students_clustered[ind == 2, ]
+
+# Наивный байесовский классификатор
+model_nb <- naiveBayes(cluster ~ age + Medu + Fedu + traveltime + studytime + failures +
+                         famrel + freetime + goout + Dalc + Walc + health + absences + G1 + G2 + G3, 
+                       data = trainData)
+pred_nb <- predict(model_nb, newdata = testData)
+table(Факт = testData$cluster, Прогноз = pred_nb)
+acc_nb <- mean(pred_nb == testData$cluster)
+paste("Точность Байесовского классификатора:", round(100 * acc_nb, 2), "%")
+
+# Дерево решений
+formula_tree <- cluster ~ age + Medu + Fedu + traveltime + studytime + failures +
+  famrel + freetime + goout + Dalc + Walc + health + absences + G1 + G2 + G3
+tree_model <- ctree(formula_tree, data = trainData)
+pred_tree <- predict(tree_model, newdata = testData)
+table(Факт = testData$cluster, Прогноз = pred_tree)
+acc_tree <- mean(pred_tree == testData$cluster)
+paste("Точность дерева решений:", round(100 * acc_tree, 2), "%")
+plot(tree_model)
+
+# Случайный лес
+model_rf <- randomForest(formula_tree, data = trainData, ntree = 100)
+pred_rf <- predict(model_rf, newdata = testData)
+table(Факт = testData$cluster, Прогноз = pred_rf)
+acc_rf <- mean(pred_rf == testData$cluster)
+paste("Точность случайного леса:", round(100 * acc_rf, 2), "%")
+
+# Вывод точности каждой модели
+cat(paste("Точность Байеса:", round(100 * acc_nb, 2), "%\n"))
+cat(paste("Точность дерева решений:", round(100 * acc_tree, 2), "%\n"))
+cat(paste("Точность случайного леса:", round(100 * acc_rf, 2), "%\n"))
