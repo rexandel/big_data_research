@@ -1490,3 +1490,555 @@ legend("topright",
 
 grid(nx = NA, ny = NULL, lty = 2, col = "lightgray")
 
+# ----- Charting boxplots of the Quality Of Life Index -----
+dev.off()
+dev.new()
+
+# Brazil
+boxplot(data_brazil$Quality_of_Life_Index,
+        main = "Distribution of Quality Of Life Index: Brazil",
+        ylab = "Rating",
+        ylim = c(min(data_brazil$Quality_of_Life_Index) - 10,
+                 max(data_brazil$Quality_of_Life_Index) + 10),
+        col = "darkgreen",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_brazil$Quality_of_Life_Index)
+IQR(data_brazil$Quality_of_Life_Index)
+
+# India
+boxplot(data_india$Quality_of_Life_Index,
+        main = "Distribution of Quality Of Life Index: India",
+        ylab = "Rating",
+        ylim = c(min(data_india$Quality_of_Life_Index) - 10,
+                 max(data_india$Quality_of_Life_Index) + 10),
+        col = "darkred",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_india$Quality_of_Life_Index)
+IQR(data_india$Quality_of_Life_Index)
+
+# Lebanon
+boxplot(data_lebanon$Quality_of_Life_Index,
+        main = "Distribution of Quality Of Life Index: Lebanon",
+        ylab = "Rating",
+        ylim = c(min(data_lebanon$Quality_of_Life_Index) - 10,
+                 max(data_lebanon$Quality_of_Life_Index) + 10),
+        col = "darkblue",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_lebanon$Quality_of_Life_Index)
+IQR(data_lebanon$Quality_of_Life_Index)
+
+# Turkey
+boxplot(data_turkey$Quality_of_Life_Index,
+        main = "Distribution of Quality Of Life Index: Turkey",
+        ylab = "Rating",
+        ylim = c(min(data_turkey$Quality_of_Life_Index) - 10,
+                 max(data_turkey$Quality_of_Life_Index) + 10),
+        col = "orange2",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_turkey$Quality_of_Life_Index)
+IQR(data_turkey$Quality_of_Life_Index)
+
+# Denmark
+boxplot(data_denmark$Quality_of_Life_Index,
+        main = "Distribution of Quality Of Life Index: Denmark",
+        ylab = "Rating",
+        ylim = c(min(data_denmark$Quality_of_Life_Index) - 10,
+                 max(data_denmark$Quality_of_Life_Index) + 10),
+        col = "purple3",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_denmark$Quality_of_Life_Index)
+IQR(data_denmark$Quality_of_Life_Index)
+
+# ----- Charting boxplots of the Purchasing Power Index -----
+dev.off()
+dev.new()
+
+# Brazil
+boxplot(data_brazil$Purchasing_Power_Index,
+        main = "Distribution of Purchasing Power Index: Brazil",
+        ylab = "Rating",
+        ylim = c(min(data_brazil$Purchasing_Power_Index) - 10,
+                 max(data_brazil$Purchasing_Power_Index) + 10),
+        col = "darkgreen",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_brazil$Purchasing_Power_Index)
+IQR(data_brazil$Purchasing_Power_Index)
+
+# India
+boxplot(data_india$Purchasing_Power_Index,
+        main = "Distribution of Purchasing Power Index: India",
+        ylab = "Rating",
+        ylim = c(min(data_india$Purchasing_Power_Index) - 10,
+                 max(data_india$Purchasing_Power_Index) + 10),
+        col = "darkred",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_india$Purchasing_Power_Index)
+IQR(data_india$Purchasing_Power_Index)
+
+# Lebanon
+boxplot(data_lebanon$Purchasing_Power_Index,
+        main = "Distribution of Purchasing Power Index: Lebanon",
+        ylab = "Rating",
+        ylim = c(min(data_lebanon$Purchasing_Power_Index) - 10,
+                 max(data_lebanon$Purchasing_Power_Index) + 10),
+        col = "darkblue",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_lebanon$Purchasing_Power_Index)
+IQR(data_lebanon$Purchasing_Power_Index)
+
+# Turkey
+boxplot(data_turkey$Purchasing_Power_Index,
+        main = "Distribution of Purchasing Power Index: Turkey",
+        ylab = "Rating",
+        ylim = c(min(data_turkey$Purchasing_Power_Index) - 10,
+                 max(data_turkey$Purchasing_Power_Index) + 10),
+        col = "orange2",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_turkey$Purchasing_Power_Index)
+IQR(data_turkey$Purchasing_Power_Index)
+
+# Denmark
+boxplot(data_denmark$Purchasing_Power_Index,
+        main = "Distribution of Purchasing Power Index: Denmark",
+        ylab = "Rating",
+        ylim = c(min(data_denmark$Purchasing_Power_Index) - 10,
+                 max(data_denmark$Purchasing_Power_Index) + 10),
+        col = "purple3",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_denmark$Purchasing_Power_Index)
+IQR(data_denmark$Purchasing_Power_Index)
+
+# ----- Charting boxplots of the Safety Index -----
+dev.off()
+dev.new()
+
+# Brazil
+boxplot(data_brazil$Safety_Index,
+        main = "Distribution of Safety Index: Brazil",
+        ylab = "Rating",
+        ylim = c(min(data_brazil$Safety_Index) - 2,
+                 max(data_brazil$Safety_Index) + 2),
+        col = "darkgreen",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_brazil$Safety_Index)
+IQR(data_brazil$Safety_Index)
+
+# India
+boxplot(data_india$Safety_Index,
+        main = "Distribution of Safety Index: India",
+        ylab = "Rating",
+        ylim = c(min(data_india$Safety_Index) - 2,
+                 max(data_india$Safety_Index) + 2),
+        col = "darkred",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_india$Safety_Index)
+IQR(data_india$Safety_Index)
+
+# Lebanon
+boxplot(data_lebanon$Safety_Index,
+        main = "Distribution of Safety Index: Lebanon",
+        ylab = "Rating",
+        ylim = c(min(data_lebanon$Safety_Index) - 2,
+                 max(data_lebanon$Safety_Index) + 2),
+        col = "darkblue",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_lebanon$Safety_Index)
+IQR(data_lebanon$Safety_Index)
+
+# Turkey
+boxplot(data_turkey$Safety_Index,
+        main = "Distribution of Safety Index: Turkey",
+        ylab = "Rating",
+        ylim = c(min(data_turkey$Safety_Index) - 2,
+                 max(data_turkey$Safety_Index) + 2),
+        col = "orange2",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_turkey$Safety_Index)
+IQR(data_turkey$Safety_Index)
+
+# Denmark
+boxplot(data_denmark$Safety_Index,
+        main = "Distribution of Safety Index: Denmark",
+        ylab = "Rating",
+        ylim = c(min(data_denmark$Safety_Index) - 2,
+                 max(data_denmark$Safety_Index) + 2),
+        col = "purple3",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_denmark$Safety_Index)
+IQR(data_denmark$Safety_Index)
+
+# ----- Charting boxplots of the Health Care Index -----
+dev.off()
+dev.new()
+
+# Brazil
+boxplot(data_brazil$Health_Care_Index,
+        main = "Distribution of Health Care Index: Brazil",
+        ylab = "Rating",
+        ylim = c(min(data_brazil$Health_Care_Index) - 5,
+                 max(data_brazil$Health_Care_Index) + 5),
+        col = "darkgreen",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_brazil$Health_Care_Index)
+IQR(data_brazil$Health_Care_Index)
+
+# India
+boxplot(data_india$Health_Care_Index,
+        main = "Distribution of Health Care Index: India",
+        ylab = "Rating",
+        ylim = c(min(data_india$Health_Care_Index) - 5,
+                 max(data_india$Health_Care_Index) + 5),
+        col = "darkred",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_india$Health_Care_Index)
+IQR(data_india$Health_Care_Index)
+
+# Lebanon
+boxplot(data_lebanon$Health_Care_Index,
+        main = "Distribution of Health Care Index: Lebanon",
+        ylab = "Rating",
+        ylim = c(min(data_lebanon$Health_Care_Index) - 5,
+                 max(data_lebanon$Health_Care_Index) + 5),
+        col = "darkblue",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_lebanon$Health_Care_Index)
+IQR(data_lebanon$Health_Care_Index)
+
+# Turkey
+boxplot(data_turkey$Health_Care_Index,
+        main = "Distribution of Health Care Index: Turkey",
+        ylab = "Rating",
+        ylim = c(min(data_turkey$Health_Care_Index) - 5,
+                 max(data_turkey$Health_Care_Index) + 5),
+        col = "orange2",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_turkey$Health_Care_Index)
+IQR(data_turkey$Health_Care_Index)
+
+# Denmark
+boxplot(data_denmark$Health_Care_Index,
+        main = "Distribution of Health Care Index: Denmark",
+        ylab = "Rating",
+        ylim = c(min(data_denmark$Health_Care_Index) - 5,
+                 max(data_denmark$Health_Care_Index) + 5),
+        col = "purple3",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_denmark$Health_Care_Index)
+IQR(data_denmark$Health_Care_Index)
+
+# ----- Charting boxplots of the Cost Of Living Index -----
+dev.off()
+dev.new()
+
+# Brazil
+boxplot(data_brazil$Cost_of_Living_Index,
+        main = "Distribution of Cost Of Living Index: Brazil",
+        ylab = "Rating",
+        ylim = c(min(data_brazil$Cost_of_Living_Index) - 10,
+                 max(data_brazil$Cost_of_Living_Index) + 10),
+        col = "darkgreen",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_brazil$Cost_of_Living_Index)
+IQR(data_brazil$Cost_of_Living_Index)
+
+# India
+boxplot(data_india$Cost_of_Living_Index,
+        main = "Distribution of Cost Of Living Index: India",
+        ylab = "Rating",
+        ylim = c(min(data_india$Cost_of_Living_Index) - 10,
+                 max(data_india$Cost_of_Living_Index) + 10),
+        col = "darkred",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_india$Cost_of_Living_Index)
+IQR(data_india$Cost_of_Living_Index)
+
+# Lebanon
+boxplot(data_lebanon$Cost_of_Living_Index,
+        main = "Distribution of Cost Of Living Index: Lebanon",
+        ylab = "Rating",
+        ylim = c(min(data_lebanon$Cost_of_Living_Index) - 10,
+                 max(data_lebanon$Cost_of_Living_Index) + 10),
+        col = "darkblue",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_lebanon$Cost_of_Living_Index)
+IQR(data_lebanon$Cost_of_Living_Index)
+
+# Turkey
+boxplot(data_turkey$Cost_of_Living_Index,
+        main = "Distribution of Cost Of Living Index: Turkey",
+        ylab = "Rating",
+        ylim = c(min(data_turkey$Cost_of_Living_Index) - 10,
+                 max(data_turkey$Cost_of_Living_Index) + 10),
+        col = "orange2",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_turkey$Cost_of_Living_Index)
+IQR(data_turkey$Cost_of_Living_Index)
+
+# Denmark
+boxplot(data_denmark$Cost_of_Living_Index,
+        main = "Distribution of Cost Of Living Index: Denmark",
+        ylab = "Rating",
+        ylim = c(min(data_denmark$Cost_of_Living_Index) - 10,
+                 max(data_denmark$Cost_of_Living_Index) + 10),
+        col = "purple3",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_denmark$Cost_of_Living_Index)
+IQR(data_denmark$Cost_of_Living_Index)
+
+# ----- Charting boxplots of the Property Price To Income Ratio -----
+dev.off()
+dev.new()
+
+# Brazil
+boxplot(data_brazil$Property_Price_to_Income_Ratio,
+        main = "Distribution of Property Price To Income Ratio Index: Brazil",
+        ylab = "Rating",
+        ylim = c(min(data_brazil$Property_Price_to_Income_Ratio) - 2,
+                 max(data_brazil$Property_Price_to_Income_Ratio) + 2),
+        col = "darkgreen",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_brazil$Property_Price_to_Income_Ratio)
+IQR(data_brazil$Property_Price_to_Income_Ratio)
+
+# India
+boxplot(data_india$Property_Price_to_Income_Ratio,
+        main = "Distribution of Property Price To Income Ratio Index: India",
+        ylab = "Rating",
+        ylim = c(min(data_india$Property_Price_to_Income_Ratio) - 2,
+                 max(data_india$Property_Price_to_Income_Ratio) + 2),
+        col = "darkred",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_india$Property_Price_to_Income_Ratio)
+IQR(data_india$Property_Price_to_Income_Ratio)
+
+# Lebanon
+boxplot(data_lebanon$Property_Price_to_Income_Ratio,
+        main = "Distribution of Property Price To Income Ratio Index: Lebanon",
+        ylab = "Rating",
+        ylim = c(min(data_lebanon$Property_Price_to_Income_Ratio) - 2,
+                 max(data_lebanon$Property_Price_to_Income_Ratio) + 2),
+        col = "darkblue",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_lebanon$Property_Price_to_Income_Ratio)
+IQR(data_lebanon$Property_Price_to_Income_Ratio)
+
+# Turkey
+boxplot(data_turkey$Property_Price_to_Income_Ratio,
+        main = "Distribution of Property Price To Income Ratio Index: Turkey",
+        ylab = "Rating",
+        ylim = c(min(data_turkey$Property_Price_to_Income_Ratio) - 2,
+                 max(data_turkey$Property_Price_to_Income_Ratio) + 2),
+        col = "orange2",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_turkey$Property_Price_to_Income_Ratio)
+IQR(data_turkey$Property_Price_to_Income_Ratio)
+
+# Denmark
+boxplot(data_denmark$Property_Price_to_Income_Ratio,
+        main = "Distribution of Property Price To Income Ratio Index: Denmark",
+        ylab = "Rating",
+        ylim = c(min(data_denmark$Property_Price_to_Income_Ratio) - 2,
+                 max(data_denmark$Property_Price_to_Income_Ratio) + 2),
+        col = "purple3",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_denmark$Property_Price_to_Income_Ratio)
+IQR(data_denmark$Property_Price_to_Income_Ratio)
+
+# ----- Charting boxplots of the Pollution Index -----
+dev.off()
+dev.new()
+
+# Brazil
+boxplot(data_brazil$Pollution_Index,
+        main = "Distribution of Pollution Index: Brazil",
+        ylab = "Rating",
+        ylim = c(min(data_brazil$Pollution_Index) - 5,
+                 max(data_brazil$Pollution_Index) + 5),
+        col = "darkgreen",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_brazil$Pollution_Index)
+IQR(data_brazil$Pollution_Index)
+
+# India
+boxplot(data_india$Pollution_Index,
+        main = "Distribution of Pollution Index: India",
+        ylab = "Rating",
+        ylim = c(min(data_india$Pollution_Index) - 5,
+                 max(data_india$Pollution_Index)) + 5,
+        col = "darkred",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_india$Pollution_Index)
+IQR(data_india$Pollution_Index)
+
+# Lebanon
+boxplot(data_lebanon$Pollution_Index,
+        main = "Distribution of Pollution Index: Lebanon",
+        ylab = "Rating",
+        ylim = c(min(data_lebanon$Pollution_Index) - 5,
+                 max(data_lebanon$Pollution_Index) + 5),
+        col = "darkblue",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_lebanon$Pollution_Index)
+IQR(data_lebanon$Pollution_Index)
+
+# Turkey
+boxplot(data_turkey$Pollution_Index,
+        main = "Distribution of Pollution Index: Turkey",
+        ylab = "Rating",
+        ylim = c(min(data_turkey$Pollution_Index) - 5,
+                 max(data_turkey$Pollution_Index) + 5),
+        col = "orange2",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_turkey$Pollution_Index)
+IQR(data_turkey$Pollution_Index)
+
+# Denmark
+boxplot(data_denmark$Pollution_Index,
+        main = "Distribution of Pollution Index: Denmark",
+        ylab = "Rating",
+        ylim = c(min(data_denmark$Pollution_Index) - 5,
+                 max(data_denmark$Pollution_Index) + 5),
+        col = "purple3",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_denmark$Pollution_Index)
+IQR(data_denmark$Pollution_Index)
+
+# ----- Charting boxplots of the Climate Index -----
+dev.off()
+dev.new()
+
+# Brazil
+boxplot(data_brazil$Climate_Index,
+        main = "Distribution of Climate Index: Brazil",
+        ylab = "Rating",
+        ylim = c(min(data_brazil$Climate_Index) - 5,
+                 max(data_brazil$Climate_Index) + 5),
+        col = "darkgreen",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_brazil$Climate_Index)
+IQR(data_brazil$Climate_Index)
+
+# India
+boxplot(data_india$Climate_Index,
+        main = "Distribution of Climate Index: India",
+        ylab = "Rating",
+        ylim = c(min(data_india$Climate_Index) - 5,
+                 max(data_india$Climate_Index) + 5),
+        col = "darkred",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_india$Climate_Index)
+IQR(data_india$Climate_Index)
+
+# Lebanon
+boxplot(data_lebanon$Climate_Index,
+        main = "Distribution of Climate Index: Lebanon",
+        ylab = "Rating",
+        ylim = c(min(data_lebanon$Climate_Index) - 5,
+                 max(data_lebanon$Climate_Index) + 5),
+        col = "darkblue",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_lebanon$Climate_Index)
+IQR(data_lebanon$Climate_Index)
+
+# Turkey
+boxplot(data_turkey$Climate_Index,
+        main = "Distribution of Climate Index: Turkey",
+        ylab = "Rating",
+        ylim = c(min(data_turkey$Climate_Index) - 5,
+                 max(data_turkey$Climate_Index) + 5),
+        col = "orange2",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_turkey$Climate_Index)
+IQR(data_turkey$Climate_Index)
+
+# Denmark
+boxplot(data_denmark$Climate_Index,
+        main = "Distribution of Climate Index: Denmark",
+        ylab = "Rating",
+        ylim = c(min(data_denmark$Climate_Index) - 5,
+                 max(data_denmark$Climate_Index) + 5),
+        col = "purple3",
+        las = 2)
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+summary(data_denmark$Climate_Index)
+IQR(data_denmark$Climate_Index)
+
