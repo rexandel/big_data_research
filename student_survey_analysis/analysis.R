@@ -498,3 +498,45 @@ grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
 axis(2, at = seq(0.0, 1.0, 0.1), cex.axis = 0.8, las = 2)
 summary(data$Adventure)
 IQR(data$Adventure)
+
+# ----- Zeroing out margins -----
+dev.off()
+par(mar = c(8, 4, 4, 2))
+
+# ----- Mega boxplot -----
+genre_data <- list(
+  Action = data$Action,
+  Sci.Fi = data$Sci.Fi,
+  Thriller = data$Thriller,
+  Comedy = data$Comedy,
+  Horror = data$Horror,
+  Drama = data$Drama,
+  Musical = data$Musical,
+  Detective = data$Detective,
+  Cartoon = data$Cartoon,
+  Adventure = data$Adventure
+)
+
+genre_colors <- c(
+  rgb(0.831, 0.475, 0.584),    # Action
+  rgb(0.561, 0.42, 0.463),     # Sci.Fi
+  rgb(0.22, 0.42, 0.463),      # Thriller
+  rgb(0.63, 0.82, 0.463),      # Comedy
+  rgb(0.77, 0.651, 0.106),     # Horror
+  rgb(0.77, 0.651, 0.85),      # Drama
+  rgb(0.427, 0.63, 0.541),     # Musical
+  rgb(0.82, 0.361, 0.298),     # Detective
+  rgb(0.82, 0.42, 0.063),      # Cartoon
+  rgb(0.365, 0.769, 0.251)     # Adventure
+)
+
+boxplot(genre_data, 
+        main = "Distribution of ratings by Genre",
+        ylab = "Rating",
+        ylim = c(0, 1),
+        las = 2,
+        col = genre_colors,
+        yaxt = "n")
+
+grid(nx = NA, ny = NULL, col = "gray", lty = "dotted")
+axis(2, at = seq(0.0, 1.0, 0.1), cex.axis = 0.8, las = 2)
